@@ -1,0 +1,15 @@
+# Local IspellDict: english
+#+STARTUP: showeverything
+#+REVEAL_TRANS: slide
+#+REVEAL_THEME: blood
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_PLUGINS: (highlight notes)
+#+REVEAL_HIGHLIGHT_CSS: data/darcula.css
+#+REVEAL_HLEVEL: 2
+#+TITLE: Open Source: User, Maintainer, Contributor
+#+AUTHOR: Gabriel Nagy
+#+DATE: <2019-11-28 Jo>
+#+EMAIL: gabriel.nagy@puppet.com
+
+* Open Source: User, Maintainer, Contributor
+{{{author}}}

@@ -1,0 +1,4 @@
+#+INCLUDE: emacs-reveal/config.org
+
+# Use custom title slide.
+#+REVEAL_TITLE_SLIDE: title-slide.html

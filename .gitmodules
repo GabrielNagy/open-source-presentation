@@ -1,0 +1,6 @@
+[submodule "emacs-reveal"]
+	path = emacs-reveal
+	url = https://gitlab.com/oer/emacs-reveal
+[submodule "oer-reveal"]
+	path = oer-reveal
+	url = https://gitlab.com/oer/oer-reveal
