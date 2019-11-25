@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2019-11-25 Mon 17:52 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Source: User, Maintainer, Contributor</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Gabriel Nagy">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Open Source: User, Maintainer, Contributor</h1>
+
+<div id="outline-container-org0c81ef8" class="outline-2">
+<h2 id="org0c81ef8">Open Source at Puppet</h2>
+<div class="outline-text-2" id="text-org0c81ef8">
+<p>
+Gabriel Nagy
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3221cce" class="outline-2">
+<h2 id="org3221cce"><code>$ whoami</code></h2>
+<div class="outline-text-2" id="text-org3221cce">
+<ul class="org-ul">
+<li>Linux &amp; FOSS user</li>
+<li>at Puppet since May</li>
+<li>working on awesome open-source projects</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdd5bf7f" class="outline-2">
+<h2 id="orgdd5bf7f">what is this?</h2>
+<div class="outline-text-2" id="text-orgdd5bf7f">
+<ul class="org-ul">
+<li>overview of our projects</li>
+<li>how we benefit from using, and being open source ourselves</li>
+<li>why is open-source beneficial</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org975e535" class="outline-2">
+<h2 id="org975e535">puppet-agent</h2>
+<div class="outline-text-2" id="text-org975e535">
+<ul class="org-ul">
+<li>collection of software required for <code>puppet</code> and its dependencies to run</li>
+<li>bundles the following:
+<ul class="org-ul">
+<li><code>runtime</code> - we build our own <code>ruby</code>, <code>curl</code>, <code>openssl</code>, <code>boost</code>, etc.</li>
+<li><code>puppet</code> - Ruby gem, our main project</li>
+<li><code>facter</code> - Ruby gem (v2), and C++ binary and libraries (v3)</li>
+<li><code>...</code> - a bunch of other dependencies (Ruby, C++)</li>
+</ul></li>
+<li>built, tested, and shipped for <b>45 OSes/platforms</b> (as of November)</li>
+</ul>
+</div>
+
+<div id="outline-container-orgedba091" class="outline-3">
+<h3 id="orgedba091"><code>puppet</code></h3>
+<div class="outline-text-3" id="text-orgedba091">
+<ul class="org-ul">
+<li>configuration management tool, declarative language</li>
+</ul>
+
+<pre class="example">
+$ puppet resource user gabi
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-puppet">user { 'gabi':
+  ensure  =&gt; 'present',
+  comment =&gt; 'gabi',
+  gid     =&gt; 1000,
+  groups  =&gt; ['wheel', 'input', 'lp', 'sys', 'network', 'docker'],
+  home    =&gt; '/home/gabi',
+  shell   =&gt; '/bin/zsh',
+  uid     =&gt; 1000,
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b1582f" class="outline-3">
+<h3 id="org4b1582f"><code>facter</code></h3>
+<div class="outline-text-3" id="text-org4b1582f">
+<ul class="org-ul">
+<li>provides facts about the system (network, disks, memory, OS)</li>
+<li>current version in C++, can be extended with custom Ruby facts</li>
+<li>can be used through a shared library, or standalone by calling its executable</li>
+</ul>
+
+<pre class="example">
+$ facter system_uptime --json
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-js">{
+  <span style="color: #5c3566;">"system_uptime"</span>: {
+    <span style="color: #5c3566;">"days"</span>: 0,
+    <span style="color: #5c3566;">"hours"</span>: 1,
+    <span style="color: #5c3566;">"seconds"</span>: 4322,
+    <span style="color: #5c3566;">"uptime"</span>: <span style="color: #5c3566;">"1:12 hours"</span>
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0387b9" class="outline-2">
+<h2 id="orga0387b9">how we use open source</h2>
+<div class="outline-text-2" id="text-orga0387b9">
+<ul class="org-ul">
+<li>keep our runtime up-to-date by patching CVEs</li>
+<li>October vulnerabilities:
+<ul class="org-ul">
+<li>Ruby</li>
+<li>OpenSSL</li>
+<li>cURL</li>
+</ul></li>
+<li>all upgrades were problematic</li>
+</ul>
+</div>
+
+<div id="outline-container-orgd05f3d9" class="outline-3">
+<h3 id="orgd05f3d9"><code>ruby</code></h3>
+<div class="outline-text-3" id="text-orgd05f3d9">
+<ul class="org-ul">
+<li>CVE release was a no-op</li>
+<li>the version we had to upgrade to was 2.4.8</li>
+</ul>
+<ul class="org-ul">
+<li>2.4.9 was released a couple of minutes before we checked <a href="https://www.ruby-lang.org/">ruby-lang.org</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge09481b" class="outline-3">
+<h3 id="orge09481b"><code>openssl</code></h3>
+<div class="outline-text-3" id="text-orge09481b">
+<ul class="org-ul">
+<li>new version did not compile on Windows</li>
+</ul>
+<ul class="org-ul">
+<li>the openssl release prep commit itself did not pass CI</li>
+<li>issue was fixed after the release</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc05279e" class="outline-3">
+<h3 id="orgc05279e"><code>curl</code></h3>
+<div class="outline-text-3" id="text-orgc05279e">
+<ul class="org-ul">
+<li>new version did not compile on Solaris</li>
+</ul>
+<ul class="org-ul">
+<li>issue was fixed after the release</li>
+<li>until new releases come out we have to live with patches</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6c4aaa5" class="outline-2">
+<h2 id="org6c4aaa5">how the community helps</h2>
+<div class="outline-text-2" id="text-org6c4aaa5">
+<ul class="org-ul">
+<li>had to harden our compiled libraries and binaries
+<ul class="org-ul">
+<li>easy: check how Debian or CentOS build our packages</li>
+</ul></li>
+<li>puppet release 6.11.0 had a regression
+<ul class="org-ul">
+<li>community provided a fix shortly after we released</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92673d8" class="outline-2">
+<h2 id="org92673d8">how we contribute back</h2>
+<div class="outline-text-2" id="text-org92673d8">
+<ul class="org-ul">
+<li>we use <code>ruby</code> extensively on non-standard platforms</li>
+<li>sometimes we discover issues</li>
+</ul>
+</div>
+
+<div id="outline-container-orgebb24ef" class="outline-3">
+<h3 id="orgebb24ef">segfaulting with <code>facter</code></h3>
+<div class="outline-text-3" id="text-orgebb24ef">
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #204a87;">Facter</span>.add(<span style="color: #5c3566;">'test'</span>) <span style="color: #346604;">do</span>
+  url = <span style="color: #5c3566;">'https://api.ipify.org?format=json'</span>
+  <span style="color: #5f615c;"># </span><span style="color: #5f615c;">{"ip":"79.114.90.219"}</span>
+  response = <span style="color: #75507b;">open</span>(url).read
+  <span style="color: #346604;">if</span> !response.to_s.empty?
+    result = <span style="color: #204a87;">JSON</span>.parse(response)
+    setcode { result[<span style="color: #5c3566;">'ip'</span>] }
+  <span style="color: #346604;">end</span>
+<span style="color: #346604;">end</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>custom fact that queries an API for your public IP</li>
+</ul>
+<pre class="example">
+$ facter test
+79.114.90.219
+</pre>
+</div>
+
+<div id="outline-container-org848e692" class="outline-4">
+<h4 id="org848e692">on windows though&#x2026;</h4>
+<div class="outline-text-4" id="text-org848e692">
+<pre class="example">
+C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
+ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
+
+-- Control frame information -----------------------------------------------
+c:0024 p:---- s:0165 e:000164 CFUNC  :wait_readable
+c:0023 p:0093 s:0160 e:000159 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45
+c:0022 p:0557 s:0153 E:001568 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:981
+c:0021 p:0004 s:0140 e:000139 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:920
+c:0020 p:0029 s:0136 e:000135 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:909
+c:0019 p:0521 s:0132 e:000131 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:337
+c:0018 p:0017 s:0111 e:000110 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:755
+c:0017 p:0029 s:0104 e:000103 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
+c:0016 p:---- s:0101 e:000100 CFUNC  :catch
+c:0015 p:0365 s:0096 E:0010e8 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:224
+c:0014 p:0328 s:0081 e:000080 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:165
+c:0013 p:0018 s:0069 e:000068 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:735
+c:0012 p:0071 s:0063 e:000062 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:35
+c:0011 p:0007 s:0055 e:000054 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:10
+c:0010 p:0030 s:0052 E:000948 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:93
+c:0009 p:0005 s:0046 e:000045 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
+c:0008 p:---- s:0043 e:000042 CFUNC  :catch
+c:0007 p:0044 s:0038 e:000037 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33
+c:0006 p:0113 s:0032 E:000650 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:108
+c:0005 p:0021 s:0020 E:000748 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:9 [FINISH]
+c:0004 p:---- s:0014 e:000013 CFUNC  :instance_eval
+c:0003 p:---- s:0011 e:000010 CFUNC  :add
+c:0002 p:0034 s:0006 E:000790 TOP    C:/cygwin64/home/Administrator/facts/ip.rb:5 [FINISH]
+c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd938b69" class="outline-4">
+<h4 id="orgd938b69">the elephant in the room</h4>
+<div class="outline-text-4" id="text-orgd938b69">
+<ul class="org-ul">
+<li>this code is not directly evaluated by the Ruby interpreter</li>
+<li>the <code>Facter.add</code> implementation looks like this:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #204a87;">VALUE</span> <span style="color: #204a87;">module</span>::<span style="color: #a40000; font-weight: bold;">ruby_add</span>(<span style="color: #204a87;">int</span> <span style="color: #b35000;">argc</span>, <span style="color: #204a87;">VALUE</span>* <span style="color: #b35000;">argv</span>, <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">self</span>)
+{
+    <span style="color: #346604;">return</span> safe_eval(<span style="color: #5c3566;">"Facter.add"</span>, [&amp;]() {
+        <span style="color: #346604;">auto</span> <span style="color: #346604;">const</span>&amp; <span style="color: #b35000;">ruby</span> = <span style="color: #204a87;">api</span>::instance();
+
+        <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">fact_self</span> = from_self(self)-&gt;create_fact(argv[0]);
+
+        ...
+
+        <span style="color: #346604;">return</span> fact_self;
+    });
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcaa7573" class="outline-4">
+<h4 id="orgcaa7573">what we knew</h4>
+<div class="outline-text-4" id="text-orgcaa7573">
+<ul class="org-ul">
+<li>this worked on ruby 2.4 but crashed on 2.5</li>
+<li>only happened on Windows</li>
+<li>somehow linked to the URL opening part</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org479f2f0" class="outline-4">
+<h4 id="org479f2f0">next steps</h4>
+<div class="outline-text-4" id="text-org479f2f0">
+<ul class="org-ul">
+<li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
+</ul>
+<pre class="example">
+$ git diff --stat v2_4_5..v2_5_3
+...
+6101 files changed, 340476 insertions(+), 79434 deletions(-)
+</pre>
+
+<ul class="org-ul">
+<li>thousands of commits, hundreds of thousands of lines</li>
+<li>only 60 commits on the windows tree</li>
+</ul>
+<pre class="example">
+git rev-list --count v2_4_5..v2_5_3 -- win32/
+60
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0368a39" class="outline-4">
+<h4 id="org0368a39">what we could have done</h4>
+<div class="outline-text-4" id="text-org0368a39">
+<ul class="org-ul">
+<li>use <code>git-bisect(1)</code> to find the culprit</li>
+<li><p>
+programatically determine which commit is responsible by building the project and testing the problematic fact
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b07ee9" class="outline-4">
+<h4 id="org0b07ee9">what we did</h4>
+<div class="outline-text-4" id="text-org0b07ee9">
+<ul class="org-ul">
+<li>figure it out by manually going through each commit</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b6af94" class="outline-4">
+<h4 id="org9b6af94">windows sockets?</h4>
+<div class="outline-text-4" id="text-org9b6af94">
+<ul class="org-ul">
+<li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
+</ul>
+<ul class="org-ul">
+<li>this replaces all references of <code>NtSocketsInitialized</code> with <code>1</code> before compile time</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org223ed8f" class="outline-4">
+<h4 id="org223ed8f"><code>NtSocketsInitialized</code></h4>
+<div class="outline-text-4" id="text-org223ed8f">
+<ul class="org-ul">
+<li>this variable is referenced over 30 times in the file, similar to the code below:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #346604;">if</span> (!NtSocketsInitialized) {
+    StartSockets();
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+after preprocessing, the bit becomes:
+</p>
+<pre class="example">
+[~/repo/ruby]$ cpp win32/win32.c
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #346604;">if</span> (!1) {
+    StartSockets();
+}
+</pre>
+</div></li>
+<li><code>StartSockets()</code> is the function responsible to initialize the Winsock DLL</li>
+<li>Winsock handles internet I/O requests for Windows</li>
+<li>There's no networking without Winsock</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3811432" class="outline-4">
+<h4 id="org3811432">getting to the point</h4>
+<div class="outline-text-4" id="text-org3811432">
+<ul class="org-ul">
+<li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
+<li><p>
+to getting called <b>once</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">rb_w32_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+{
+    <span style="color: #5f615c;">// </span><span style="color: #5f615c;">...</span>
+    tzset();
+    init_env();
+    init_stdhandle();
+    atexit(exit_handler);
+
+    <span style="color: #5f615c;">// </span><span style="color: #5f615c;">Initialize Winsock</span>
+    StartSockets();
+}
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org45ef57a" class="outline-4">
+<h4 id="org45ef57a"></h4>
+<div class="outline-text-4" id="text-org45ef57a">
+<ul class="org-ul">
+<li><code>rb_w32_sysinit</code> is a function that we have to call manually if we're embedding the Ruby interpreter</li>
+<li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+{
+<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+    rb_w32_sysinit(argc, argv);
+<span style="color: #75507b;">#endif</span>
+...
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf2c04a6" class="outline-4">
+<h4 id="orgf2c04a6">fixing stuff</h4>
+<div class="outline-text-4" id="text-orgf2c04a6">
+<ul class="org-ul">
+<li>we try calling the function in a simple C program</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+{
+<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+    rb_w32_sysinit(argc, argv);
+<span style="color: #75507b;">#endif</span>
+...
+}
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+{
+<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+    rb_w32_sysinit(argc, argv);
+<span style="color: #75507b;">#endif</span>
+...
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+{
+    <span style="color: #204a87;">int</span> <span style="color: #b35000;">state</span>;
+    <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">result</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">License: This text, “<span property="dc:title">Open Source: User, Maintainer, Contributor</span>,” by <span property="dc:creator cc:attributionName">Gabriel Nagy</span> is published under the Creative Commons license <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+<p class="date">Created: <span property="dc:created">2019-11-25 Mon 17:51</span></p>
+<div class="legalese"><p><a href="/imprint.html">Imprint</a> | <a href="/privacy.html">Privacy Policy</a></p></div>
+</div>
+</body>
+</html>
