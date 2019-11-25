@@ -1,12 +1,11 @@
 services:
-  - docker
-
+- docker
 script:
-  - docker run -v `pwd`:/mnt --workdir /mnt registry.gitlab.com/oer/docker/emacs-reveal:3.1 emacs --batch --load elisp/publish.el
-
+- docker run -v `pwd`:/mnt --workdir /mnt registry.gitlab.com/oer/docker/emacs-reveal:3.1
+  emacs --batch --load elisp/publish.el
 deploy:
   provider: pages:git
   local_dir: public
-  token:
-    secure: SiKr83VO5kE8OYHkJLfbyOLVWkXlB85ZB8Rt+x7LE6uBofnS7Xe/OhESqphss37/+tncX1FWmyi9zYnJR8ihA8j1fC9IB69sX4oBYfrln1UnzEyRumGDsvjlgK28j4BMZYb4wM9g//NEu7Swf58l3dr1Z6fOXN+aD9m0XSYRrYQCpkf1TdjupjbtkAqT6xReuyiXjL+25kkFOlgr8dL/iTY87P+CV3Khvr60I6Egvf32gBWt7RE61ymOv4NmShv/lH1SCurJ5GDmQAIv9A07XGHXoEz0T4/H/m8ToDtbK+H5iE3E9zRDTlmYNUVGxVBs748nQWh+7PYaNYNiAijzjpVve6STvlsdiX418Am12NXybu9RGOn3buAQYruaIUKFYKwnxY8XXDeObxaiPvJPk9OUD3JueRikX+IRVK+iXPbTcNmrQ0pe+6o+re444fChASTwnTnmZQ5ceYEidu/kYy3B3+Nhiw7W9yib9et6soxnSeUVdOJt+gfIRqKOE0wW82Xwk29fb5i0hwp41CJlppOy4G76+MmBkWveUtLXgOZzU1E3eS8IXPpQoN/4ow/nVIP4O0Y6mfVICDZmlbU36awhbn9v9xfwJeQjfd5rRo0YKzPJI/RJE6MIQe7yH9qNF5GSUGC+jSov82KzIFQ6MAHY4tS1rvJxzHUjJDDVClI=
   edge: true
+  token:
+    secure: M2M0x2WQpgBpu9xY1MENnJw2lA27ZuVlE9YnydwTR1M14otTvlSFcowsalSkjERuCzbvdMQcUQvGePu5Jqe/Bp1xChGFLuO+yjMEOTIaHpmTk+hSDaWPkylXo0SXT3U+GnVY5iA9W8kBNeEVMU1n3cF9fVwntp82obuniPOMB5s1Lno7F91wn+6XjJeR3mBOcFRIgv1nEXf2IGlba4bUNait+EQnv4KswQKbU9Rmr8tlNi6d4JGwAdr9tRAQccWkNE4NctN5IVdRRlWyfJmTSm+D0uNnE7WgngZtIkCeJJO0Obzt2I5CRn5eDh9Zmf2W75TLOj1TpUJXlJD82RXpSYaVQTkJeI54aOY+3wb1fY+PDS/Tl6LWFmwO93qBL883xh2GyaRg1Lr02HmufomROq7tJIA8Sly/QuKWiA+zBOz4dX2LQmHd4OR5S1Ih4UTw9C7lMx4thrRmDKyKKoaEiyAlStgrHU0FmlBvbp5qkGmvxvYD/l69H8x39xrYM8z44n8mvURRJ5Sl07hZZOX1t1MraPhrT8NNr1So9HUzModAmldDwQGf1hf+cuVpoYal9EQ/zpiGqxPkzvQ2xKWhoP410UANk0sl2RZ4I4DDdRxMzo/xES2Rpfpe3cd2okQbcfnjSo8cAo1AgARg40GxdqTfHRfkT303s2z4FkQc+ZQ=
