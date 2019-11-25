@@ -1,45 +1,86 @@
-;;; publish.el --- Publish reveal.js presentation from Org file
+;;; publish.el --- Publish reveal.js presentation from Org files on Gitlab Pages
 ;; -*- Mode: Emacs-Lisp -*-
 ;; -*- coding: utf-8 -*-
 
-;; Copyright (C) 2017, 2018, 2019 Jens Lechtenbörger
+;; Copyright (C) 2017 Jens Lechtenbörger
 
 ;;; License: GPLv3
 
 ;;; Commentary:
-;; Publication of Org source files to reveal.js uses Org export
-;; functionality offered by org-re-reveal and oer-reveal.
-;; Initialization code for both is provided by emacs-reveal.
-;; Note that org-re-reveal and oer-reveal are available on MELPA.
-;;
-;; Use this file from its parent directory with the following shell
-;; command:
-;; emacs --batch --load elisp/publish.el
+;; Inspired by publish.el by Rasmus:
+;; https://gitlab.com/pages/org-mode/blob/master/publish.el
+
 
 ;;; Code:
 (package-initialize)
-(require 'oer-reveal)
+(require 'org)
+(require 'ox-publish)
 
-;; Load emacs-reveal.
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/emacs-reveal"))
-(condition-case nil
-    ;; Either require package with above hard-coded location
-    ;; (e.g., in docker) ...
-    (require 'emacs-reveal)
-  (error
-   ;; ... or look for sub-directory "emacs-reveal" of parent directory.
-   (add-to-list
-    'load-path
-    (expand-file-name "../emacs-reveal/" (file-name-directory load-file-name)))
-   (require 'emacs-reveal)))
+(setq org-export-with-smart-quotes t
+      org-confirm-babel-evaluate nil)
 
-;; Activate klipse.
-(setq org-re-reveal-klipsify-src t
-      org-re-reveal-klipse-js "https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"
-      )
+(add-to-list 'load-path
+	     (expand-file-name
+	      "../emacs-reveal/" (file-name-directory load-file-name)))
+; (require 'reveal-config)
+(setq org-reveal-root "./reveal.js"
+      org-reveal-title-slide nil)
 
-;; Publish Org files.
-(oer-reveal-publish-all)
+(setq org-publish-project-alist
+      (list
+       (list "index"
+	     :base-directory "."
+	     :base-extension "org"
+	     :exclude "config\\|license-template"
+	     :publishing-function '(org-html-publish-to-html)
+	     :publishing-directory "./public")
+       (list "images"
+	     :base-directory "img"
+	     :base-extension (regexp-opt '("png" "jpg" "ico" "svg" "gif" "webm"))
+	     :publishing-directory "./public/img"
+	     :publishing-function 'org-publish-attachment)
+       (list "data"
+	     :base-directory "data"
+	     :base-extension (regexp-opt '("css" "js" "html"))
+	     :publishing-directory "./public/data"
+	     :publishing-function 'org-publish-attachment)
+       (list "audios"
+	     :base-directory "audio"
+	     :base-extension (regexp-opt '("ogg" "mp3"))
+	     :publishing-directory "./public/audio"
+	     :publishing-function 'org-publish-attachment)
+       (list "reveal-static"
+	     :base-directory "emacs-reveal/reveal.js"
+	     :exclude "\\.git"
+	     :base-extension 'any
+	     :publishing-directory "./public/reveal.js"
+	     :publishing-function 'org-publish-attachment
+	     :recursive t)
+       (list "reveal-theme"
+	     :base-directory "emacs-reveal/css"
+	     :base-extension 'any
+	     :publishing-directory "./public/reveal.js/css/theme"
+	     :publishing-function 'org-publish-attachment)
+       (list "reveal.js-plugins-anything"
+	     :base-directory "emacs-reveal/reveal.js-plugins/anything"
+	     :base-extension 'any
+	     :publishing-directory "./public/reveal.js/plugin/anything"
+	     :publishing-function 'org-publish-attachment
+	     :recursive t)
+       (list "reveal.js-plugins-audio-slideshow"
+	     :base-directory "emacs-reveal/reveal.js-plugins/audio-slideshow"
+	     :base-extension 'any
+	     :publishing-directory "./public/reveal.js/plugin/audio-slideshow"
+	     :publishing-function 'org-publish-attachment
+	     :recursive t)
+       (list "reveal.js-jump-plugin"
+	     :base-directory "emacs-reveal/reveal.js-jump-plugin/jump"
+	     :base-extension 'any
+	     :publishing-directory "./public/reveal.js/plugin/jump"
+	     :publishing-function 'org-publish-attachment
+	     :recursive t)
+       (list "site" :components '("index"))))
 
 (provide 'publish)
 ;;; publish.el ends here
+
