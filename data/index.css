@@ -11,22 +11,10 @@
     font-size: 18px; }}
 
 body {
-  background: #fff;
-  background-color: #fff;
-  max-width: 28rem;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.4;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
-  color: #222; }
-
-@media (min-width: 38em) {
-  body {
-    max-width: 32rem; }}
-
-@media (min-width: 56em) {
-  body {
-    max-width: 38rem; }}
+  }
 
 h1 { margin: 1rem 0 .5rem 0; }
 h2, h3 { margin: 1.5rem 0 .5rem 0; }
@@ -56,12 +44,16 @@ a[href^="http"]:not(.nooutlink):after {
 
 img {
   margin: 5px 0px 5px 0px;
-  float: right; }
+  /* float: right; */
+}
 
 pre {
-    border: 1px solid #ccc;
-    box-shadow: none;
-    margin: 1em; }
+  width: 110%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  margin: 1em; }
 
 .title  { text-align: center; }
 

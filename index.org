@@ -1,15 +1,284 @@
 # Local IspellDict: english
+#+PROPERTY: header-args :eval no
 #+STARTUP: showeverything
 #+REVEAL_TRANS: slide
 #+REVEAL_THEME: blood
-#+OPTIONS: num:nil toc:nil
+#+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800
+#+REVEAL_HIGHLIGHT_CSS: data/monokai.css
 #+REVEAL_PLUGINS: (highlight notes)
-#+REVEAL_HIGHLIGHT_CSS: data/darcula.css
+#+REVEAL_EXTRA_CSS: ./data/index.css
 #+REVEAL_HLEVEL: 2
 #+TITLE: Open Source: User, Maintainer, Contributor
 #+AUTHOR: Gabriel Nagy
 #+DATE: <2019-11-28 Jo>
 #+EMAIL: gabriel.nagy@puppet.com
 
-* Open Source: User, Maintainer, Contributor
+* Open Source at Puppet
 {{{author}}}
+
+* ~$ whoami~
+- Linux & FOSS user
+- at Puppet since May
+- working on awesome open-source projects
+
+* what is this?
+- overview of our projects
+- how we benefit from using, and being open source ourselves
+- why is open-source beneficial
+
+* puppet-agent
+- collection of software required for ~puppet~ and its dependencies to run
+- bundles the following:
+  - ~runtime~ - we build our own ~ruby~, ~curl~, ~openssl~, ~boost~, etc.
+  - ~puppet~ - Ruby gem, our main project
+  - ~facter~ - Ruby gem (v2), and C++ binary and libraries (v3)
+  - ~...~ - a bunch of other dependencies (Ruby, C++)
+- built, tested, and shipped for *45 OSes/platforms* (as of November)
+
+** ~puppet~
+- configuration management tool, declarative language
+
+: $ puppet resource user gabi
+#+BEGIN_SRC puppet
+user { 'gabi':
+  ensure  => 'present',
+  comment => 'gabi',
+  gid     => 1000,
+  groups  => ['wheel', 'input', 'lp', 'sys', 'network', 'docker'],
+  home    => '/home/gabi',
+  shell   => '/bin/zsh',
+  uid     => 1000,
+}
+#+END_SRC
+
+** ~facter~
+- provides facts about the system (network, disks, memory, OS)
+- current version in C++, can be extended with custom Ruby facts
+- can be used through a shared library, or standalone by calling its executable
+
+: $ facter system_uptime --json
+#+BEGIN_SRC js
+{
+  "system_uptime": {
+    "days": 0,
+    "hours": 1,
+    "seconds": 4322,
+    "uptime": "1:12 hours"
+  }
+}
+#+END_SRC
+
+* how we use open source
+#+ATTR_REVEAL: :frag (appear appear appear)
+- keep our runtime up-to-date by patching CVEs
+- October vulnerabilities:
+  - Ruby
+  - OpenSSL
+  - cURL
+- all upgrades were problematic
+
+** ~ruby~
+   - CVE release was a no-op
+   - the version we had to upgrade to was 2.4.8
+   #+REVEAL_HTML: <img class="stretch" src="img/ruby-release.png">
+   - 2.4.9 was released a couple of minutes before we checked [[https://www.ruby-lang.org][ruby-lang.org]]
+
+** ~openssl~
+   - new version did not compile on Windows
+   #+REVEAL_HTML: <img class="stretch" src="img/openssl-release.png">
+   - the openssl release prep commit itself did not pass CI
+   - issue was fixed after the release
+
+** ~curl~
+   - new version did not compile on Solaris
+   #+REVEAL_HTML: <img class="stretch" src="img/curl-release.png">
+   - issue was fixed after the release
+   - until new releases come out we have to live with patches
+
+* how the community helps
+- had to harden our compiled libraries and binaries
+  - easy: check how Debian or CentOS build our packages
+- puppet release 6.11.0 had a regression
+  - community provided a fix shortly after we released
+
+* how we contribute back
+  - we use ~ruby~ extensively on non-standard platforms
+  - sometimes we discover issues
+
+** segfaulting with ~facter~
+   #+begin_src ruby
+     Facter.add('test') do
+       url = 'https://api.ipify.org?format=json'
+       # {"ip":"79.114.90.219"}
+       response = open(url).read
+       if !response.to_s.empty?
+         result = JSON.parse(response)
+         setcode { result['ip'] }
+       end
+     end
+   #+end_src
+   - custom fact that queries an API for your public IP
+   : $ facter test
+   : 79.114.90.219
+
+*** on windows though...
+   #+REVEAL_HTML: <div style="font-size: 0.7em;">
+   #+begin_src
+C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
+ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
+
+-- Control frame information -----------------------------------------------
+c:0024 p:---- s:0165 e:000164 CFUNC  :wait_readable
+c:0023 p:0093 s:0160 e:000159 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45
+c:0022 p:0557 s:0153 E:001568 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:981
+c:0021 p:0004 s:0140 e:000139 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:920
+c:0020 p:0029 s:0136 e:000135 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:909
+c:0019 p:0521 s:0132 e:000131 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:337
+c:0018 p:0017 s:0111 e:000110 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:755
+c:0017 p:0029 s:0104 e:000103 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
+c:0016 p:---- s:0101 e:000100 CFUNC  :catch
+c:0015 p:0365 s:0096 E:0010e8 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:224
+c:0014 p:0328 s:0081 e:000080 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:165
+c:0013 p:0018 s:0069 e:000068 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:735
+c:0012 p:0071 s:0063 e:000062 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:35
+c:0011 p:0007 s:0055 e:000054 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:10
+c:0010 p:0030 s:0052 E:000948 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:93
+c:0009 p:0005 s:0046 e:000045 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
+c:0008 p:---- s:0043 e:000042 CFUNC  :catch
+c:0007 p:0044 s:0038 e:000037 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33
+c:0006 p:0113 s:0032 E:000650 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:108
+c:0005 p:0021 s:0020 E:000748 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:9 [FINISH]
+c:0004 p:---- s:0014 e:000013 CFUNC  :instance_eval
+c:0003 p:---- s:0011 e:000010 CFUNC  :add
+c:0002 p:0034 s:0006 E:000790 TOP    C:/cygwin64/home/Administrator/facts/ip.rb:5 [FINISH]
+c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
+   #+end_src
+   #+REVEAL_HTML: </div>
+
+*** the elephant in the room
+    - this code is not directly evaluated by the Ruby interpreter
+    - the ~Facter.add~ implementation looks like this:
+    #+begin_src C++
+     VALUE module::ruby_add(int argc, VALUE* argv, VALUE self)
+     {
+         return safe_eval("Facter.add", [&]() {
+             auto const& ruby = api::instance();
+
+             VALUE fact_self = from_self(self)->create_fact(argv[0]);
+
+             ...
+
+             return fact_self;
+         });
+     }
+    #+end_src
+
+*** what we knew
+    - this worked on ruby 2.4 but crashed on 2.5
+    - only happened on Windows
+    - somehow linked to the URL opening part
+
+*** next steps
+    - check what changed in ~ruby~ between 2.4 and 2.5
+    : $ git diff --stat v2_4_5..v2_5_3
+    : ...
+    : 6101 files changed, 340476 insertions(+), 79434 deletions(-)
+    - thousands of commits, hundreds of thousands of lines
+    - only 60 commits on the windows tree
+    : git rev-list --count v2_4_5..v2_5_3 -- win32/
+    : 60
+
+*** what we could have done
+    #+ATTR_REVEAL: :frag (none appear)
+    - use ~git-bisect(1)~ to find the culprit
+    - programatically determine which commit is responsible by building the project and testing the problematic fact
+      #+REVEAL_HTML: <img src="img/drake-no.jpg" width="50%">
+   
+*** what we did
+    - figure it out by manually going through each commit
+    #+REVEAL_HTML: <img src="img/drake-yes.jpg" width="50%">
+
+*** windows sockets?
+    - a chunk of commit ~e33b169 - win32.c: vm_exit_handler~ 
+    #+REVEAL_HTML: <img class="stretch" src="img/ruby-define.png">
+    - this replaces all references of ~NtSocketsInitialized~ with ~1~ before compile time
+
+*** ~NtSocketsInitialized~
+    - this variable is referenced over 30 times in the file, similar to the code below:
+    #+begin_src C
+      if (!NtSocketsInitialized) {
+          StartSockets();
+      }
+    #+end_src
+    #+ATTR_REVEAL: :frag (appear appear appear)
+    - after preprocessing, the bit becomes:
+      : [~/repo/ruby]$ cpp win32/win32.c
+     #+begin_src C
+        if (!1) {
+            StartSockets();
+        }
+     #+end_src
+    - ~StartSockets()~ is the function responsible to initialize the Winsock DLL
+    - Winsock handles internet I/O requests for Windows
+    - There's no networking without Winsock
+    
+*** getting to the point
+    #+ATTR_REVEAL: :frag appear
+    - after commit [[https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26][~e33b169~]], ~StartSockets()~ goes from possibly being called in 34 places
+    - to getting called *once*
+
+      #+begin_src C
+        void rb_w32_sysinit(int *argc, char ***argv)
+        {
+            // ...
+            tzset();
+            init_env();
+            init_stdhandle();
+            atexit(exit_handler);
+
+            // Initialize Winsock
+            StartSockets();
+        }
+      #+end_src
+
+*** 
+    - ~rb_w32_sysinit~ is a function that we have to call manually if we're embedding the Ruby interpreter
+    - to be platform-agnostic we can call the main ~sysinit~ function:
+    #+begin_src C
+      void ruby_sysinit(int *argc, char ***argv)
+      {
+      #if defined(_WIN32)
+          rb_w32_sysinit(argc, argv);
+      #endif
+      ...
+      }
+    #+end_src
+
+*** fixing stuff
+    - we try calling the function in a simple C program
+    #+begin_src C
+      void ruby_sysinit(int *argc, char ***argv)
+      {
+      #if defined(_WIN32)
+          rb_w32_sysinit(argc, argv);
+      #endif
+      ...
+      }
+    #+end_src
+    #+begin_src C
+      void ruby_sysinit(int *argc, char ***argv)
+      {
+      #if defined(_WIN32)
+          rb_w32_sysinit(argc, argv);
+      #endif
+      ...
+      }
+    #+end_src
+
+    #+begin_src C
+      void ruby_sysinit(int *argc, char ***argv)
+      {
+          int state;
+          VALUE result;
+      }
+     #+end_src
