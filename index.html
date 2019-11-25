@@ -1,301 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- 2019-11-25 Mon 18:25 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
 <title>Open Source: User, Maintainer, Contributor</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Gabriel Nagy" />
+<meta name="author" content="Gabriel Nagy"/>
 <style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+.underline { text-decoration: underline; }
 </style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+<link rel="stylesheet" href="./reveal.js/css/theme/blood.css" id="theme"/>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+<link rel="stylesheet" href="./data/index.css"/>
 
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
 </script>
 </head>
 <body>
-<div id="content">
-<h1 class="title">Open Source: User, Maintainer, Contributor</h1>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Open Source: User, Maintainer, Contributor</h1><h2 class="author">Gabriel Nagy</h2><h2 class="date">2019-11-28 Thu 00:00</h2><p class="date">Created: 2019-11-25 Mon 20:35</p>
+</section>
 
-<div id="outline-container-org140d594" class="outline-2">
-<h2 id="org140d594">Open Source at Puppet</h2>
-<div class="outline-text-2" id="text-org140d594">
+<section>
+<section id="slide-org0306917">
+<h2 id="org0306917">Open Source at Puppet</h2>
 <p>
 Gabriel Nagy
 </p>
-</div>
-</div>
 
-<div id="outline-container-org6ced38e" class="outline-2">
-<h2 id="org6ced38e"><code>$ whoami</code></h2>
-<div class="outline-text-2" id="text-org6ced38e">
-<ul class="org-ul">
+</section>
+</section>
+<section>
+<section id="slide-org2f417d1">
+<h2 id="org2f417d1"><code>$ whoami</code></h2>
+<ul>
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
 <li>working on awesome open-source projects</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org9f3fd34" class="outline-2">
-<h2 id="org9f3fd34">what is this?</h2>
-<div class="outline-text-2" id="text-org9f3fd34">
-<ul class="org-ul">
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org31b773e">
+<h2 id="org31b773e">what is this?</h2>
+<ul>
 <li>overview of our projects</li>
 <li>how we benefit from using, and being open source ourselves</li>
 <li>why is open-source beneficial</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org0d8c4a9" class="outline-2">
-<h2 id="org0d8c4a9">puppet-agent</h2>
-<div class="outline-text-2" id="text-org0d8c4a9">
-<ul class="org-ul">
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0d3346a">
+<h2 id="org0d3346a">puppet-agent</h2>
+<ul>
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
-<ul class="org-ul">
+<ul>
 <li><code>runtime</code> - we build our own <code>ruby</code>, <code>curl</code>, <code>openssl</code>, <code>boost</code>, etc.</li>
 <li><code>puppet</code> - Ruby gem, our main project</li>
 <li><code>facter</code> - Ruby gem (v2), and C++ binary and libraries (v3)</li>
 <li><code>...</code> - a bunch of other dependencies (Ruby, C++)</li>
+
 </ul></li>
 <li>built, tested, and shipped for <b>45 OSes/platforms</b> (as of November)</li>
-</ul>
-</div>
 
-<div id="outline-container-org7a71e2d" class="outline-3">
-<h3 id="org7a71e2d"><code>puppet</code></h3>
-<div class="outline-text-3" id="text-org7a71e2d">
-<ul class="org-ul">
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf5e5ad4">
+<h3 id="orgf5e5ad4"><code>puppet</code></h3>
+<ul>
 <li>configuration management tool, declarative language</li>
+
 </ul>
 
 <pre class="example">
@@ -303,7 +96,8 @@ $ puppet resource user gabi
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-puppet">user { 'gabi':
+
+<pre  class="src src-puppet">user { 'gabi':
   ensure  =&gt; 'present',
   comment =&gt; 'gabi',
   gid     =&gt; 1000,
@@ -314,16 +108,17 @@ $ puppet resource user gabi
 }
 </pre>
 </div>
-</div>
-</div>
 
-<div id="outline-container-orga8369c5" class="outline-3">
-<h3 id="orga8369c5"><code>facter</code></h3>
-<div class="outline-text-3" id="text-orga8369c5">
-<ul class="org-ul">
+</section>
+</section>
+<section>
+<section id="slide-orge7e2903">
+<h3 id="orge7e2903"><code>facter</code></h3>
+<ul>
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
 <li>can be used through a shared library, or standalone by calling its executable</li>
+
 </ul>
 
 <pre class="example">
@@ -331,7 +126,8 @@ $ facter system_uptime --json
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-js">{
+
+<pre  class="src src-js">{
   <span style="font-style: italic;">"system_uptime"</span>: {
     <span style="font-style: italic;">"days"</span>: 0,
     <span style="font-style: italic;">"hours"</span>: 1,
@@ -341,95 +137,111 @@ $ facter system_uptime --json
 }
 </pre>
 </div>
-</div>
-</div>
-</div>
 
-<div id="outline-container-orge99309e" class="outline-2">
-<h2 id="orge99309e">how we use open source</h2>
-<div class="outline-text-2" id="text-orge99309e">
-<ul class="org-ul">
-<li>keep our runtime up-to-date by patching CVEs</li>
-<li>October vulnerabilities:
-<ul class="org-ul">
+</section>
+</section>
+<section>
+<section id="slide-orgff5a685">
+<h2 id="orgff5a685">how we use open source</h2>
+<ul>
+<li class="fragment appear">keep our runtime up-to-date by patching CVEs</li>
+<li class="fragment appear">October vulnerabilities:
+<ul>
 <li>Ruby</li>
 <li>OpenSSL</li>
 <li>cURL</li>
-</ul></li>
-<li>all upgrades were problematic</li>
-</ul>
-</div>
 
-<div id="outline-container-org35425d9" class="outline-3">
-<h3 id="org35425d9"><code>ruby</code></h3>
-<div class="outline-text-3" id="text-org35425d9">
-<ul class="org-ul">
+</ul></li>
+<li class="fragment appear">all upgrades were problematic</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org47427b3">
+<h3 id="org47427b3"><code>ruby</code></h3>
+<ul>
 <li>CVE release was a no-op</li>
 <li>the version we had to upgrade to was 2.4.8</li>
-</ul>
-<ul class="org-ul">
-<li>2.4.9 was released a couple of minutes before we checked <a href="https://www.ruby-lang.org/">ruby-lang.org</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org3f40a24" class="outline-3">
-<h3 id="org3f40a24"><code>openssl</code></h3>
-<div class="outline-text-3" id="text-org3f40a24">
-<ul class="org-ul">
-<li>new version did not compile on Windows</li>
 </ul>
-<ul class="org-ul">
+<img class="stretch" src="img/ruby-release.png">
+<ul>
+<li>2.4.9 was released a couple of minutes before we checked <a href="https://www.ruby-lang.org/">ruby-lang.org</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8df1597">
+<h3 id="org8df1597"><code>openssl</code></h3>
+<ul>
+<li>new version did not compile on Windows</li>
+
+</ul>
+<img class="stretch" src="img/openssl-release.png">
+<ul>
 <li>the openssl release prep commit itself did not pass CI</li>
 <li>issue was fixed after the release</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgaf4f1c9" class="outline-3">
-<h3 id="orgaf4f1c9"><code>curl</code></h3>
-<div class="outline-text-3" id="text-orgaf4f1c9">
-<ul class="org-ul">
-<li>new version did not compile on Solaris</li>
 </ul>
-<ul class="org-ul">
+
+</section>
+</section>
+<section>
+<section id="slide-org3989539">
+<h3 id="org3989539"><code>curl</code></h3>
+<ul>
+<li>new version did not compile on Solaris</li>
+
+</ul>
+<img class="stretch" src="img/curl-release.png">
+<ul>
 <li>issue was fixed after the release</li>
 <li>until new releases come out we have to live with patches</li>
-</ul>
-</div>
-</div>
-</div>
 
-<div id="outline-container-org5c96192" class="outline-2">
-<h2 id="org5c96192">how the community helps</h2>
-<div class="outline-text-2" id="text-org5c96192">
-<ul class="org-ul">
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3493bf8">
+<h2 id="org3493bf8">how the community helps</h2>
+<ul>
 <li>had to harden our compiled libraries and binaries
-<ul class="org-ul">
+<ul>
 <li>easy: check how Debian or CentOS build our packages</li>
+
 </ul></li>
 <li>puppet release 6.11.0 had a regression
-<ul class="org-ul">
+<ul>
 <li>community provided a fix shortly after we released</li>
-</ul></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc42ce2a" class="outline-2">
-<h2 id="orgc42ce2a">how we contribute back</h2>
-<div class="outline-text-2" id="text-orgc42ce2a">
-<ul class="org-ul">
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcae850e">
+<h2 id="orgcae850e">how we contribute back</h2>
+<ul>
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
 <li>sometimes we discover issues</li>
-</ul>
-</div>
 
-<div id="outline-container-org00442cd" class="outline-3">
-<h3 id="org00442cd">segfaulting with <code>facter</code></h3>
-<div class="outline-text-3" id="text-org00442cd">
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org953a580">
+<h3 id="org953a580">segfaulting with <code>facter</code></h3>
 <div class="org-src-container">
-<pre class="src src-ruby"><span style="font-weight: bold; text-decoration: underline;">Facter</span>.add(<span style="font-style: italic;">'test'</span>) <span style="font-weight: bold;">do</span>
+
+<pre  class="src src-ruby"><span style="font-weight: bold; text-decoration: underline;">Facter</span>.add(<span style="font-style: italic;">'test'</span>) <span style="font-weight: bold;">do</span>
   url = <span style="font-style: italic;">'https://api.ipify.org?format=json'</span>
   <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">{"ip":"79.114.90.219"}</span>
   response = <span style="font-weight: bold;">open</span>(url).read
@@ -440,19 +252,20 @@ $ facter system_uptime --json
 <span style="font-weight: bold;">end</span>
 </pre>
 </div>
-<ul class="org-ul">
+<ul>
 <li>custom fact that queries an API for your public IP</li>
+
 </ul>
 <pre class="example">
 $ facter test
 79.114.90.219
 </pre>
-</div>
 
-<div id="outline-container-org310b5d4" class="outline-4">
-<h4 id="org310b5d4">on windows though&#x2026;</h4>
-<div class="outline-text-4" id="text-org310b5d4">
-<pre class="example">
+</section>
+<section id="slide-orgfedf4f4">
+<h4 id="orgfedf4f4">on windows though&#x2026;</h4>
+<div style="font-size: 0.7em;">
+<pre  class="example">
 C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
 ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
 
@@ -483,17 +296,18 @@ c:0002 p:0034 s:0006 E:000790 TOP    C:/cygwin64/home/Administrator/facts/ip.rb:
 c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </pre>
 </div>
-</div>
 
-<div id="outline-container-org6c39961" class="outline-4">
-<h4 id="org6c39961">the elephant in the room</h4>
-<div class="outline-text-4" id="text-org6c39961">
-<ul class="org-ul">
+</section>
+<section id="slide-orgd358590">
+<h4 id="orgd358590">the elephant in the room</h4>
+<ul>
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
+
 </ul>
 <div class="org-src-container">
-<pre class="src src-C++"><span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; text-decoration: underline;">module</span>::<span style="font-weight: bold;">ruby_add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span>* <span style="font-weight: bold; font-style: italic;">argv</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">self</span>)
+
+<pre  class="src src-C++"><span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; text-decoration: underline;">module</span>::<span style="font-weight: bold;">ruby_add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span>* <span style="font-weight: bold; font-style: italic;">argv</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">self</span>)
 {
     <span style="font-weight: bold;">return</span> safe_eval(<span style="font-style: italic;">"Facter.add"</span>, [&amp;]() {
         <span style="font-weight: bold;">auto</span> <span style="font-weight: bold;">const</span>&amp; <span style="font-weight: bold; font-style: italic;">ruby</span> = <span style="font-weight: bold; text-decoration: underline;">api</span>::instance();
@@ -507,25 +321,23 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 }
 </pre>
 </div>
-</div>
-</div>
 
-<div id="outline-container-org0e98de6" class="outline-4">
-<h4 id="org0e98de6">what we knew</h4>
-<div class="outline-text-4" id="text-org0e98de6">
-<ul class="org-ul">
+</section>
+<section id="slide-org1298ed1">
+<h4 id="org1298ed1">what we knew</h4>
+<ul>
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
 <li>somehow linked to the URL opening part</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orga1eb078" class="outline-4">
-<h4 id="orga1eb078">next steps</h4>
-<div class="outline-text-4" id="text-orga1eb078">
-<ul class="org-ul">
+</ul>
+
+</section>
+<section id="slide-org0e6a38e">
+<h4 id="org0e6a38e">next steps</h4>
+<ul>
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
+
 </ul>
 <pre class="example">
 $ git diff --stat v2_4_5..v2_5_3
@@ -533,64 +345,66 @@ $ git diff --stat v2_4_5..v2_5_3
 6101 files changed, 340476 insertions(+), 79434 deletions(-)
 </pre>
 
-<ul class="org-ul">
+<ul>
 <li>thousands of commits, hundreds of thousands of lines</li>
 <li>only 60 commits on the windows tree</li>
+
 </ul>
 <pre class="example">
 git rev-list --count v2_4_5..v2_5_3 -- win32/
 60
 </pre>
-</div>
-</div>
 
-<div id="outline-container-org82ba30b" class="outline-4">
-<h4 id="org82ba30b">what we could have done</h4>
-<div class="outline-text-4" id="text-org82ba30b">
-<ul class="org-ul">
+</section>
+<section id="slide-orgd956653">
+<h4 id="orgd956653">what we could have done</h4>
+<ul>
 <li>use <code>git-bisect(1)</code> to find the culprit</li>
-<li><p>
+<li class="fragment appear"><p>
 programatically determine which commit is responsible by building the project and testing the problematic fact
-</p></li>
-</ul>
-</div>
-</div>
+</p>
+<img src="img/drake-no.jpg" width="50%"></li>
 
-<div id="outline-container-org11cbb0e" class="outline-4">
-<h4 id="org11cbb0e">what we did</h4>
-<div class="outline-text-4" id="text-org11cbb0e">
-<ul class="org-ul">
+</ul>
+
+</section>
+<section id="slide-org3f5559f">
+<h4 id="org3f5559f">what we did</h4>
+<ul>
 <li>figure it out by manually going through each commit</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org3d6c4d9" class="outline-4">
-<h4 id="org3d6c4d9">windows sockets?</h4>
-<div class="outline-text-4" id="text-org3d6c4d9">
-<ul class="org-ul">
+</ul>
+<img src="img/drake-yes.jpg" width="50%">
+
+</section>
+<section id="slide-orga0f7b90">
+<h4 id="orga0f7b90">windows sockets?</h4>
+<ul>
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
-</ul>
-<ul class="org-ul">
-<li>this replaces all references of <code>NtSocketsInitialized</code> with <code>1</code> before compile time</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orge85c6d9" class="outline-4">
-<h4 id="orge85c6d9"><code>NtSocketsInitialized</code></h4>
-<div class="outline-text-4" id="text-orge85c6d9">
-<ul class="org-ul">
+</ul>
+<img class="stretch" src="img/ruby-define.png">
+<ul>
+<li>this replaces all references of <code>NtSocketsInitialized</code> with <code>1</code> before compile time</li>
+
+</ul>
+
+</section>
+<section id="slide-org79e2751">
+<h4 id="org79e2751"><code>NtSocketsInitialized</code></h4>
+<ul>
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
+
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold;">if</span> (!NtSocketsInitialized) {
+
+<pre  class="src src-C"><span style="font-weight: bold;">if</span> (!NtSocketsInitialized) {
     StartSockets();
 }
 </pre>
 </div>
-<ul class="org-ul">
-<li><p>
+<ul>
+<li class="fragment appear"><p>
 after preprocessing, the bit becomes:
 </p>
 <pre class="example">
@@ -598,29 +412,30 @@ after preprocessing, the bit becomes:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold;">if</span> (!1) {
+
+<pre  class="src src-C"><span style="font-weight: bold;">if</span> (!1) {
     StartSockets();
 }
 </pre>
 </div></li>
-<li><code>StartSockets()</code> is the function responsible to initialize the Winsock DLL</li>
-<li>Winsock handles internet I/O requests for Windows</li>
-<li>There&rsquo;s no networking without Winsock</li>
-</ul>
-</div>
-</div>
+<li class="fragment appear"><code>StartSockets()</code> is the function responsible to initialize the Winsock DLL</li>
+<li class="fragment appear">Winsock handles internet I/O requests for Windows</li>
+<li class="fragment appear">There&rsquo;s no networking without Winsock</li>
 
-<div id="outline-container-orgc5c8b59" class="outline-4">
-<h4 id="orgc5c8b59">getting to the point</h4>
-<div class="outline-text-4" id="text-orgc5c8b59">
-<ul class="org-ul">
+</ul>
+
+</section>
+<section id="slide-org0579bd7">
+<h4 id="org0579bd7">getting to the point</h4>
+<ul class="fragment appear">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
 to getting called <b>once</b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">rb_w32_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+
+<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">rb_w32_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
     <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">...</span>
     tzset();
@@ -633,19 +448,20 @@ to getting called <b>once</b>
 }
 </pre>
 </div></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org9e8a092" class="outline-4">
-<h4 id="org9e8a092"></h4>
-<div class="outline-text-4" id="text-org9e8a092">
-<ul class="org-ul">
+</ul>
+
+</section>
+<section id="slide-org1d9dbd4">
+<h4 id="org1d9dbd4"></h4>
+<ul>
 <li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
+
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+
+<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
 <span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
@@ -654,17 +470,17 @@ to getting called <b>once</b>
 }
 </pre>
 </div>
-</div>
-</div>
 
-<div id="outline-container-org172940b" class="outline-4">
-<h4 id="org172940b">fixing stuff</h4>
-<div class="outline-text-4" id="text-org172940b">
-<ul class="org-ul">
+</section>
+<section id="slide-orgbb07f86">
+<h4 id="orgbb07f86">fixing stuff</h4>
+<ul>
 <li>we try calling the function in a simple C program</li>
+
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+
+<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
 <span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
@@ -674,7 +490,8 @@ to getting called <b>once</b>
 </pre>
 </div>
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+
+<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
 <span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
@@ -685,23 +502,53 @@ to getting called <b>once</b>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+
+<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
     <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">state</span>;
     <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">result</span>;
 }
 </pre>
 </div>
+</section>
+</section>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="date">Date: 2019-11-28 Thu 00:00</p>
-<p class="author">Author: Gabriel Nagy</p>
-<p class="date">Created: 2019-11-25 Mon 18:25</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+pdfSeparateFragments: true,
+
+overview: true,
+width: 1200,
+height: 800,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
 </body>
 </html>
