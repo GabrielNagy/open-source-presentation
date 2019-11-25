@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-25 Mon 17:52 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 2019-11-25 Mon 18:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Open Source: User, Maintainer, Contributor</title>
-<meta name="generator" content="Org mode">
-<meta name="author" content="Gabriel Nagy">
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Gabriel Nagy" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -242,18 +244,18 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Open Source: User, Maintainer, Contributor</h1>
 
-<div id="outline-container-org0c81ef8" class="outline-2">
-<h2 id="org0c81ef8">Open Source at Puppet</h2>
-<div class="outline-text-2" id="text-org0c81ef8">
+<div id="outline-container-org140d594" class="outline-2">
+<h2 id="org140d594">Open Source at Puppet</h2>
+<div class="outline-text-2" id="text-org140d594">
 <p>
 Gabriel Nagy
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3221cce" class="outline-2">
-<h2 id="org3221cce"><code>$ whoami</code></h2>
-<div class="outline-text-2" id="text-org3221cce">
+<div id="outline-container-org6ced38e" class="outline-2">
+<h2 id="org6ced38e"><code>$ whoami</code></h2>
+<div class="outline-text-2" id="text-org6ced38e">
 <ul class="org-ul">
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
@@ -262,9 +264,9 @@ Gabriel Nagy
 </div>
 </div>
 
-<div id="outline-container-orgdd5bf7f" class="outline-2">
-<h2 id="orgdd5bf7f">what is this?</h2>
-<div class="outline-text-2" id="text-orgdd5bf7f">
+<div id="outline-container-org9f3fd34" class="outline-2">
+<h2 id="org9f3fd34">what is this?</h2>
+<div class="outline-text-2" id="text-org9f3fd34">
 <ul class="org-ul">
 <li>overview of our projects</li>
 <li>how we benefit from using, and being open source ourselves</li>
@@ -273,9 +275,9 @@ Gabriel Nagy
 </div>
 </div>
 
-<div id="outline-container-org975e535" class="outline-2">
-<h2 id="org975e535">puppet-agent</h2>
-<div class="outline-text-2" id="text-org975e535">
+<div id="outline-container-org0d8c4a9" class="outline-2">
+<h2 id="org0d8c4a9">puppet-agent</h2>
+<div class="outline-text-2" id="text-org0d8c4a9">
 <ul class="org-ul">
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
@@ -289,9 +291,9 @@ Gabriel Nagy
 </ul>
 </div>
 
-<div id="outline-container-orgedba091" class="outline-3">
-<h3 id="orgedba091"><code>puppet</code></h3>
-<div class="outline-text-3" id="text-orgedba091">
+<div id="outline-container-org7a71e2d" class="outline-3">
+<h3 id="org7a71e2d"><code>puppet</code></h3>
+<div class="outline-text-3" id="text-org7a71e2d">
 <ul class="org-ul">
 <li>configuration management tool, declarative language</li>
 </ul>
@@ -315,9 +317,9 @@ $ puppet resource user gabi
 </div>
 </div>
 
-<div id="outline-container-org4b1582f" class="outline-3">
-<h3 id="org4b1582f"><code>facter</code></h3>
-<div class="outline-text-3" id="text-org4b1582f">
+<div id="outline-container-orga8369c5" class="outline-3">
+<h3 id="orga8369c5"><code>facter</code></h3>
+<div class="outline-text-3" id="text-orga8369c5">
 <ul class="org-ul">
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
@@ -330,11 +332,11 @@ $ facter system_uptime --json
 
 <div class="org-src-container">
 <pre class="src src-js">{
-  <span style="color: #5c3566;">"system_uptime"</span>: {
-    <span style="color: #5c3566;">"days"</span>: 0,
-    <span style="color: #5c3566;">"hours"</span>: 1,
-    <span style="color: #5c3566;">"seconds"</span>: 4322,
-    <span style="color: #5c3566;">"uptime"</span>: <span style="color: #5c3566;">"1:12 hours"</span>
+  <span style="font-style: italic;">"system_uptime"</span>: {
+    <span style="font-style: italic;">"days"</span>: 0,
+    <span style="font-style: italic;">"hours"</span>: 1,
+    <span style="font-style: italic;">"seconds"</span>: 4322,
+    <span style="font-style: italic;">"uptime"</span>: <span style="font-style: italic;">"1:12 hours"</span>
   }
 }
 </pre>
@@ -343,9 +345,9 @@ $ facter system_uptime --json
 </div>
 </div>
 
-<div id="outline-container-orga0387b9" class="outline-2">
-<h2 id="orga0387b9">how we use open source</h2>
-<div class="outline-text-2" id="text-orga0387b9">
+<div id="outline-container-orge99309e" class="outline-2">
+<h2 id="orge99309e">how we use open source</h2>
+<div class="outline-text-2" id="text-orge99309e">
 <ul class="org-ul">
 <li>keep our runtime up-to-date by patching CVEs</li>
 <li>October vulnerabilities:
@@ -358,9 +360,9 @@ $ facter system_uptime --json
 </ul>
 </div>
 
-<div id="outline-container-orgd05f3d9" class="outline-3">
-<h3 id="orgd05f3d9"><code>ruby</code></h3>
-<div class="outline-text-3" id="text-orgd05f3d9">
+<div id="outline-container-org35425d9" class="outline-3">
+<h3 id="org35425d9"><code>ruby</code></h3>
+<div class="outline-text-3" id="text-org35425d9">
 <ul class="org-ul">
 <li>CVE release was a no-op</li>
 <li>the version we had to upgrade to was 2.4.8</li>
@@ -371,9 +373,9 @@ $ facter system_uptime --json
 </div>
 </div>
 
-<div id="outline-container-orge09481b" class="outline-3">
-<h3 id="orge09481b"><code>openssl</code></h3>
-<div class="outline-text-3" id="text-orge09481b">
+<div id="outline-container-org3f40a24" class="outline-3">
+<h3 id="org3f40a24"><code>openssl</code></h3>
+<div class="outline-text-3" id="text-org3f40a24">
 <ul class="org-ul">
 <li>new version did not compile on Windows</li>
 </ul>
@@ -384,9 +386,9 @@ $ facter system_uptime --json
 </div>
 </div>
 
-<div id="outline-container-orgc05279e" class="outline-3">
-<h3 id="orgc05279e"><code>curl</code></h3>
-<div class="outline-text-3" id="text-orgc05279e">
+<div id="outline-container-orgaf4f1c9" class="outline-3">
+<h3 id="orgaf4f1c9"><code>curl</code></h3>
+<div class="outline-text-3" id="text-orgaf4f1c9">
 <ul class="org-ul">
 <li>new version did not compile on Solaris</li>
 </ul>
@@ -398,9 +400,9 @@ $ facter system_uptime --json
 </div>
 </div>
 
-<div id="outline-container-org6c4aaa5" class="outline-2">
-<h2 id="org6c4aaa5">how the community helps</h2>
-<div class="outline-text-2" id="text-org6c4aaa5">
+<div id="outline-container-org5c96192" class="outline-2">
+<h2 id="org5c96192">how the community helps</h2>
+<div class="outline-text-2" id="text-org5c96192">
 <ul class="org-ul">
 <li>had to harden our compiled libraries and binaries
 <ul class="org-ul">
@@ -414,28 +416,28 @@ $ facter system_uptime --json
 </div>
 </div>
 
-<div id="outline-container-org92673d8" class="outline-2">
-<h2 id="org92673d8">how we contribute back</h2>
-<div class="outline-text-2" id="text-org92673d8">
+<div id="outline-container-orgc42ce2a" class="outline-2">
+<h2 id="orgc42ce2a">how we contribute back</h2>
+<div class="outline-text-2" id="text-orgc42ce2a">
 <ul class="org-ul">
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
 <li>sometimes we discover issues</li>
 </ul>
 </div>
 
-<div id="outline-container-orgebb24ef" class="outline-3">
-<h3 id="orgebb24ef">segfaulting with <code>facter</code></h3>
-<div class="outline-text-3" id="text-orgebb24ef">
+<div id="outline-container-org00442cd" class="outline-3">
+<h3 id="org00442cd">segfaulting with <code>facter</code></h3>
+<div class="outline-text-3" id="text-org00442cd">
 <div class="org-src-container">
-<pre class="src src-ruby"><span style="color: #204a87;">Facter</span>.add(<span style="color: #5c3566;">'test'</span>) <span style="color: #346604;">do</span>
-  url = <span style="color: #5c3566;">'https://api.ipify.org?format=json'</span>
-  <span style="color: #5f615c;"># </span><span style="color: #5f615c;">{"ip":"79.114.90.219"}</span>
-  response = <span style="color: #75507b;">open</span>(url).read
-  <span style="color: #346604;">if</span> !response.to_s.empty?
-    result = <span style="color: #204a87;">JSON</span>.parse(response)
-    setcode { result[<span style="color: #5c3566;">'ip'</span>] }
-  <span style="color: #346604;">end</span>
-<span style="color: #346604;">end</span>
+<pre class="src src-ruby"><span style="font-weight: bold; text-decoration: underline;">Facter</span>.add(<span style="font-style: italic;">'test'</span>) <span style="font-weight: bold;">do</span>
+  url = <span style="font-style: italic;">'https://api.ipify.org?format=json'</span>
+  <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">{"ip":"79.114.90.219"}</span>
+  response = <span style="font-weight: bold;">open</span>(url).read
+  <span style="font-weight: bold;">if</span> !response.to_s.empty?
+    result = <span style="font-weight: bold; text-decoration: underline;">JSON</span>.parse(response)
+    setcode { result[<span style="font-style: italic;">'ip'</span>] }
+  <span style="font-weight: bold;">end</span>
+<span style="font-weight: bold;">end</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -447,9 +449,9 @@ $ facter test
 </pre>
 </div>
 
-<div id="outline-container-org848e692" class="outline-4">
-<h4 id="org848e692">on windows though&#x2026;</h4>
-<div class="outline-text-4" id="text-org848e692">
+<div id="outline-container-org310b5d4" class="outline-4">
+<h4 id="org310b5d4">on windows though&#x2026;</h4>
+<div class="outline-text-4" id="text-org310b5d4">
 <pre class="example">
 C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
 ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
@@ -483,24 +485,24 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 </div>
 
-<div id="outline-container-orgd938b69" class="outline-4">
-<h4 id="orgd938b69">the elephant in the room</h4>
-<div class="outline-text-4" id="text-orgd938b69">
+<div id="outline-container-org6c39961" class="outline-4">
+<h4 id="org6c39961">the elephant in the room</h4>
+<div class="outline-text-4" id="text-org6c39961">
 <ul class="org-ul">
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C++"><span style="color: #204a87;">VALUE</span> <span style="color: #204a87;">module</span>::<span style="color: #a40000; font-weight: bold;">ruby_add</span>(<span style="color: #204a87;">int</span> <span style="color: #b35000;">argc</span>, <span style="color: #204a87;">VALUE</span>* <span style="color: #b35000;">argv</span>, <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">self</span>)
+<pre class="src src-C++"><span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; text-decoration: underline;">module</span>::<span style="font-weight: bold;">ruby_add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span>* <span style="font-weight: bold; font-style: italic;">argv</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">self</span>)
 {
-    <span style="color: #346604;">return</span> safe_eval(<span style="color: #5c3566;">"Facter.add"</span>, [&amp;]() {
-        <span style="color: #346604;">auto</span> <span style="color: #346604;">const</span>&amp; <span style="color: #b35000;">ruby</span> = <span style="color: #204a87;">api</span>::instance();
+    <span style="font-weight: bold;">return</span> safe_eval(<span style="font-style: italic;">"Facter.add"</span>, [&amp;]() {
+        <span style="font-weight: bold;">auto</span> <span style="font-weight: bold;">const</span>&amp; <span style="font-weight: bold; font-style: italic;">ruby</span> = <span style="font-weight: bold; text-decoration: underline;">api</span>::instance();
 
-        <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">fact_self</span> = from_self(self)-&gt;create_fact(argv[0]);
+        <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">fact_self</span> = from_self(self)-&gt;create_fact(argv[0]);
 
         ...
 
-        <span style="color: #346604;">return</span> fact_self;
+        <span style="font-weight: bold;">return</span> fact_self;
     });
 }
 </pre>
@@ -508,9 +510,9 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 </div>
 
-<div id="outline-container-orgcaa7573" class="outline-4">
-<h4 id="orgcaa7573">what we knew</h4>
-<div class="outline-text-4" id="text-orgcaa7573">
+<div id="outline-container-org0e98de6" class="outline-4">
+<h4 id="org0e98de6">what we knew</h4>
+<div class="outline-text-4" id="text-org0e98de6">
 <ul class="org-ul">
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
@@ -519,9 +521,9 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 </div>
 
-<div id="outline-container-org479f2f0" class="outline-4">
-<h4 id="org479f2f0">next steps</h4>
-<div class="outline-text-4" id="text-org479f2f0">
+<div id="outline-container-orga1eb078" class="outline-4">
+<h4 id="orga1eb078">next steps</h4>
+<div class="outline-text-4" id="text-orga1eb078">
 <ul class="org-ul">
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
 </ul>
@@ -542,9 +544,9 @@ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </div>
 </div>
 
-<div id="outline-container-org0368a39" class="outline-4">
-<h4 id="org0368a39">what we could have done</h4>
-<div class="outline-text-4" id="text-org0368a39">
+<div id="outline-container-org82ba30b" class="outline-4">
+<h4 id="org82ba30b">what we could have done</h4>
+<div class="outline-text-4" id="text-org82ba30b">
 <ul class="org-ul">
 <li>use <code>git-bisect(1)</code> to find the culprit</li>
 <li><p>
@@ -554,18 +556,18 @@ programatically determine which commit is responsible by building the project an
 </div>
 </div>
 
-<div id="outline-container-org0b07ee9" class="outline-4">
-<h4 id="org0b07ee9">what we did</h4>
-<div class="outline-text-4" id="text-org0b07ee9">
+<div id="outline-container-org11cbb0e" class="outline-4">
+<h4 id="org11cbb0e">what we did</h4>
+<div class="outline-text-4" id="text-org11cbb0e">
 <ul class="org-ul">
 <li>figure it out by manually going through each commit</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9b6af94" class="outline-4">
-<h4 id="org9b6af94">windows sockets?</h4>
-<div class="outline-text-4" id="text-org9b6af94">
+<div id="outline-container-org3d6c4d9" class="outline-4">
+<h4 id="org3d6c4d9">windows sockets?</h4>
+<div class="outline-text-4" id="text-org3d6c4d9">
 <ul class="org-ul">
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
 </ul>
@@ -575,14 +577,14 @@ programatically determine which commit is responsible by building the project an
 </div>
 </div>
 
-<div id="outline-container-org223ed8f" class="outline-4">
-<h4 id="org223ed8f"><code>NtSocketsInitialized</code></h4>
-<div class="outline-text-4" id="text-org223ed8f">
+<div id="outline-container-orge85c6d9" class="outline-4">
+<h4 id="orge85c6d9"><code>NtSocketsInitialized</code></h4>
+<div class="outline-text-4" id="text-orge85c6d9">
 <ul class="org-ul">
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #346604;">if</span> (!NtSocketsInitialized) {
+<pre class="src src-C"><span style="font-weight: bold;">if</span> (!NtSocketsInitialized) {
     StartSockets();
 }
 </pre>
@@ -596,21 +598,21 @@ after preprocessing, the bit becomes:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #346604;">if</span> (!1) {
+<pre class="src src-C"><span style="font-weight: bold;">if</span> (!1) {
     StartSockets();
 }
 </pre>
 </div></li>
 <li><code>StartSockets()</code> is the function responsible to initialize the Winsock DLL</li>
 <li>Winsock handles internet I/O requests for Windows</li>
-<li>There's no networking without Winsock</li>
+<li>There&rsquo;s no networking without Winsock</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3811432" class="outline-4">
-<h4 id="org3811432">getting to the point</h4>
-<div class="outline-text-4" id="text-org3811432">
+<div id="outline-container-orgc5c8b59" class="outline-4">
+<h4 id="orgc5c8b59">getting to the point</h4>
+<div class="outline-text-4" id="text-orgc5c8b59">
 <ul class="org-ul">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
@@ -618,15 +620,15 @@ to getting called <b>once</b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">rb_w32_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">rb_w32_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-    <span style="color: #5f615c;">// </span><span style="color: #5f615c;">...</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">...</span>
     tzset();
     init_env();
     init_stdhandle();
     atexit(exit_handler);
 
-    <span style="color: #5f615c;">// </span><span style="color: #5f615c;">Initialize Winsock</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">Initialize Winsock</span>
     StartSockets();
 }
 </pre>
@@ -635,19 +637,19 @@ to getting called <b>once</b>
 </div>
 </div>
 
-<div id="outline-container-org45ef57a" class="outline-4">
-<h4 id="org45ef57a"></h4>
-<div class="outline-text-4" id="text-org45ef57a">
+<div id="outline-container-org9e8a092" class="outline-4">
+<h4 id="org9e8a092"></h4>
+<div class="outline-text-4" id="text-org9e8a092">
 <ul class="org-ul">
-<li><code>rb_w32_sysinit</code> is a function that we have to call manually if we're embedding the Ruby interpreter</li>
+<li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="color: #75507b;">#endif</span>
+<span style="font-weight: bold;">#endif</span>
 ...
 }
 </pre>
@@ -655,38 +657,38 @@ to getting called <b>once</b>
 </div>
 </div>
 
-<div id="outline-container-orgf2c04a6" class="outline-4">
-<h4 id="orgf2c04a6">fixing stuff</h4>
-<div class="outline-text-4" id="text-orgf2c04a6">
+<div id="outline-container-org172940b" class="outline-4">
+<h4 id="org172940b">fixing stuff</h4>
+<div class="outline-text-4" id="text-org172940b">
 <ul class="org-ul">
 <li>we try calling the function in a simple C program</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="color: #75507b;">#endif</span>
+<span style="font-weight: bold;">#endif</span>
 ...
 }
 </pre>
 </div>
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-<span style="color: #75507b;">#if</span> <span style="color: #75507b;">defined</span>(_WIN32)
+<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="color: #75507b;">#endif</span>
+<span style="font-weight: bold;">#endif</span>
 ...
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #204a87;">void</span> <span style="color: #a40000; font-weight: bold;">ruby_sysinit</span>(<span style="color: #204a87;">int</span> *<span style="color: #b35000;">argc</span>, <span style="color: #204a87;">char</span> ***<span style="color: #b35000;">argv</span>)
+<pre class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
 {
-    <span style="color: #204a87;">int</span> <span style="color: #b35000;">state</span>;
-    <span style="color: #204a87;">VALUE</span> <span style="color: #b35000;">result</span>;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">state</span>;
+    <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">result</span>;
 }
 </pre>
 </div>
@@ -696,9 +698,10 @@ to getting called <b>once</b>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">License: This text, “<span property="dc:title">Open Source: User, Maintainer, Contributor</span>,” by <span property="dc:creator cc:attributionName">Gabriel Nagy</span> is published under the Creative Commons license <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
-<p class="date">Created: <span property="dc:created">2019-11-25 Mon 17:51</span></p>
-<div class="legalese"><p><a href="/imprint.html">Imprint</a> | <a href="/privacy.html">Privacy Policy</a></p></div>
+<p class="date">Date: 2019-11-28 Thu 00:00</p>
+<p class="author">Author: Gabriel Nagy</p>
+<p class="date">Created: 2019-11-25 Mon 18:25</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

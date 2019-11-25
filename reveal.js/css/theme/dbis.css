@@ -1,15 +1,11 @@
 /**
- * Copyright (C) 2017-2019 Jens Lechtenbörger
+ * Copyright (C) 2017 Jens Lechtenbörger
  *
- * SPDX-License-Identifier: LicenseRef-MIT-JL
+ * Theme for DBIS Group's slides
  *
- * Theme for DBIS Group's slides.
- *
- * Note that this CSS file is meant to be used with oer-reveal.css, which
- * was imported here previously.  Imports lead to additional round-trips
- * upon loading, though.  Thus, oer-reveal.css is now added via
- * REVEAL_EXTRA_CSS in org/config.org.
+ * Released under the MIT License: https://opensource.org/licenses/MIT
  */
+@import url(jl-simple.css);
 
 /*********************************************
  * JiTT Questions
@@ -26,35 +22,41 @@ html.jitt li, html.jitt p {
  * Logos
  *********************************************/
 
-.reveal .top-logos {
-  display: inline-block;
-  width: 100%; }
-
 .reveal .wwu-logo {
-  float: left;
+  position: fixed;
   width: 296px;
-  height: 100px; }
+  height: 100px;
+  left: 0;
+  top: 0; }
 
 .reveal .dbis-logo {
-  margin: 0px 30px;
+  position: fixed;
   width: 200px;
-  height: 107px; }
+  height: 107px;
+  right: 0;
+  top: 0; }
 
 .reveal .ercis-logo {
-  margin: 0px 30px;
+  position: fixed;
   width: 200px;
-  height: 127px; }
+  height: 127px;
+  right: 50px;
+  bottom: 20px; }
 
 /* Move logos if GitLab ribbon is displayed. */
 .reveal .dbis-logo-glr {
-  margin: 0px 100px;
+  position: fixed;
   width: 200px;
-  height: 107px; }
+  height: 107px;
+  right: 100px;
+  top: 0; }
 
 .reveal .ercis-logo-glr {
-  margin: 50px 100px;
+  position: fixed;
   width: 200px;
-  height: 127px; }
+  height: 127px;
+  right: 100px;
+  bottom: 20px; }
 
 /*********************************************
  * OTHER
@@ -68,11 +70,14 @@ html.jitt li, html.jitt p {
   margin: 0; }
 
 .reveal .course-context p {
-  line-height: 1.2;
+  line-height: 1.0;
   margin: 50px 0;
   }
 
 .reveal .course-group {
+  position: fixed;
+  bottom: 5vh;
+  left: 0;
   color: #788a82; }
 
 .reveal .course-group p {
@@ -85,7 +90,7 @@ html.jitt li, html.jitt p {
 
 .reveal .currtopic {
   font-weight: bold;
-  font-size: 0.75em; }
+  font-size: 0.9em; }
 
 .reveal .prevtopic {
   font-weight: lighter;

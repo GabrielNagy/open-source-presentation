@@ -18,7 +18,6 @@ Reveal.initialize({
 	// ...
 	dependencies: [
 		// ... 
-		{ src: 'plugin/audio-slideshow/RecordRTC.js', condition: function( ) { return !!document.body.classList; } },				
 		{ src: 'plugin/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },				
 		{ src: 'plugin/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 		// ... 
@@ -47,7 +46,6 @@ Reveal.initialize({
 		advance: 0, 		// advance to next slide after given time in milliseconds after audio has played, use negative value to not advance 
 		autoplay: false,	// automatically start slideshow
 		defaultDuration: 5,	// default duration in seconds if no audio is available 
-		defaultAudios: true,	// try to play audios with names such as audio/1.2.ogg
 		playerOpacity: 0.05,	// opacity value of audio player if unfocused
 		playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls 
 		startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
@@ -86,8 +84,6 @@ For each slide or fragment you can explicitly specify a file to be played when t
 ```
 
 If no audio file is explicitly specified, the plugin automatically determines the name of the audio file using the given ```prefix```, the slide (or fragment) indices, and the ```suffix```, e.g. in the above code the slideshow will play the file ```audio/1.2.ogg```  before the fragment is shown (assuming that ```prefix``` is ```"audio/"```, ```suffix``` is ```".ogg"``` , ```Reveal.getIndices().h``` is ```"1"``` and ```Reveal.getIndices().v``` is ```"2"```).
-
-If you just want to play audio when file names are explicitly set with ```data-audio-src```, configure ```defaultAudios``` to ```false```.
 
 ### Text-to-speech
 
@@ -167,6 +163,7 @@ For other browser and mobile devices the functionality may be limited or the plu
 
 The ```slideshow-recorder.js```  plugin is based on [RecordRTC.js](https://github.com/muaz-khan/WebRTC-Experiment/tree/master/RecordRTC) and supports recording on recent desktop versions of Firefox, Chrome, and Opera. 
 For other browser and mobile devices recording may not work at all.
+Some known issues are listed [here](https://github.com/muaz-khan/WebRTC-Experiment/tree/master/RecordRTC#possible-issuesfailures).
 
 ### Recording and fetching audio files on Chrome
 
