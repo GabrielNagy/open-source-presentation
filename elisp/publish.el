@@ -32,7 +32,7 @@
 	     :base-directory "."
 	     :base-extension "org"
 	     :exclude "config\\|license-template"
-	     :publishing-function '(org-html-publish-to-html)
+	     :publishing-function 'org-re-reveal-publish-to-reveal
 	     :publishing-directory "./public")
        (list "images"
 	     :base-directory "img"

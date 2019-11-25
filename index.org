@@ -5,7 +5,7 @@
 #+REVEAL_THEME: blood
 #+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800
 #+REVEAL_HIGHLIGHT_CSS: data/monokai.css
-#+REVEAL_PLUGINS: (highlight notes)
+#+REVEAL_PLUGINS: (notes)
 #+REVEAL_EXTRA_CSS: ./data/index.css
 #+REVEAL_HLEVEL: 2
 #+TITLE: Open Source: User, Maintainer, Contributor
