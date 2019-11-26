@@ -33,23 +33,23 @@
 </section>
 
 <section>
-<section id="slide-org5221497">
-<h2 id="org5221497"><code>$ whoami</code></h2>
+<section id="slide-orgbc51ca7">
+<h2 id="orgbc51ca7"><code>$ whoami</code></h2>
 <ul>
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
-<li>working on awesome open-source projects</li>
+<li>mostly working on open-source projects</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc788a5e">
-<h2 id="orgc788a5e">what is this?</h2>
+<section id="slide-org9fef27c">
+<h2 id="org9fef27c">what is this?</h2>
 <ul>
 <li>overview of our projects</li>
-<li>how we benefit from using, and being open source ourselves</li>
+<li>how we benefit from <code>/using|being/</code> open-source</li>
 <li>why is open-source beneficial</li>
 
 </ul>
@@ -57,8 +57,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org5ea6563">
-<h2 id="org5ea6563">puppet-agent</h2>
+<section id="slide-org8444857">
+<h2 id="org8444857">puppet-agent</h2>
 <ul>
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
@@ -76,10 +76,11 @@
 </section>
 </section>
 <section>
-<section id="slide-orga85bcb3">
-<h3 id="orga85bcb3"><code>puppet</code></h3>
+<section id="slide-org0bc50b8">
+<h3 id="org0bc50b8"><code>puppet</code></h3>
 <ul>
 <li>configuration management tool, declarative language</li>
+<li>you declare the <i>final state</i> of the environment</li>
 
 </ul>
 
@@ -100,12 +101,16 @@ $ puppet resource user gabi
 }
 </code></pre>
 </div>
+<ul>
+<li><code>puppet</code> translates this into platform-specific instructions</li>
+
+</ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org5a36865">
-<h3 id="org5a36865"><code>facter</code></h3>
+<section id="slide-org4e3ee7a">
+<h3 id="org4e3ee7a"><code>facter</code></h3>
 <ul>
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
@@ -133,8 +138,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org761b01c">
-<h2 id="org761b01c">how we use open source</h2>
+<section id="slide-org430a758">
+<h2 id="org430a758">how we use open source</h2>
 <ul>
 <li class="fragment appear">keep our runtime up-to-date by patching CVEs</li>
 <li class="fragment appear">October vulnerabilities:
@@ -151,8 +156,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org0a4c6f9">
-<h3 id="org0a4c6f9"><code>ruby</code></h3>
+<section id="slide-orgb61f95a">
+<h3 id="orgb61f95a"><code>ruby</code></h3>
 <ul>
 <li>hotfix release did not install</li>
 <li>the version we had to upgrade to was 2.4.8</li>
@@ -167,8 +172,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org29507b6">
-<h3 id="org29507b6"><code>openssl</code></h3>
+<section id="slide-org0efeed0">
+<h3 id="org0efeed0"><code>openssl</code></h3>
 <ul>
 <li>new version did not compile on Windows</li>
 
@@ -183,8 +188,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-orgd155ce2">
-<h3 id="orgd155ce2"><code>curl</code></h3>
+<section id="slide-org1e26ebb">
+<h3 id="org1e26ebb"><code>curl</code></h3>
 <ul>
 <li>new version did not compile on Solaris</li>
 
@@ -192,15 +197,15 @@ $ facter system_uptime --json
 <img class="stretch" src="img/curl-release.png">
 <ul>
 <li>issue was fixed after the release</li>
-<li>until new releases come out we have to live with patches</li>
+<li>we need to patch <code>curl</code> and <code>openssl</code> until new releases come out</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgfbfde0e">
-<h3 id="orgfbfde0e">conclusions?</h3>
+<section id="slide-orgbfea904">
+<h3 id="orgbfea904">conclusions?</h3>
 <ul>
 <li>open-source projects are widely used and understaffed
 <ul>
@@ -209,15 +214,24 @@ $ facter system_uptime --json
 <li><code>ruby</code> - around 20 people are actively contributing</li>
 
 </ul></li>
-<li>most of the time projects are maintained through volunteer efforts</li>
+<li><p>
+most of the time projects are maintained through volunteer efforts
+</p>
+<aside class="notes">
+<p>
+if something doesn&rsquo;t work, don&rsquo;t immediately try to fix it.
+find out if someone else has done it already. it&rsquo;s open-source
+</p>
+
+</aside></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org7a79a4f">
-<h2 id="org7a79a4f">how the community helps</h2>
+<section id="slide-org6d21b09">
+<h2 id="org6d21b09">how the community helps</h2>
 <ul>
 <li>had to update our compile/link flags for our vendored libraries and binaries
 <ul>
@@ -226,7 +240,17 @@ $ facter system_uptime --json
 </ul></li>
 <li>our latest <code>puppet</code> release had a regression
 <ul>
-<li>community provided a fix shortly after we released</li>
+<li><p>
+community provided a fix shortly after we released
+</p>
+<aside class="notes">
+<p>
+as a newcomer, puppet being open-source helped a lot. you can
+search the internet for most issues and it&rsquo;s high chance that
+someone else might have encountered what you are looking for
+</p>
+
+</aside></li>
 
 </ul></li>
 
@@ -235,19 +259,19 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org50dc7fb">
-<h2 id="org50dc7fb">how we contribute back</h2>
+<section id="slide-org424fc07">
+<h2 id="org424fc07">how we contribute back</h2>
 <ul>
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
-<li>sometimes we discover issues</li>
+<li>sometimes we discover issues&#x2026;</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org0da29d0">
-<h3 id="org0da29d0">segfaulting with <code>facter</code></h3>
+<section id="slide-org374863d">
+<h3 id="org374863d">segfaulting with <code>facter</code></h3>
 <div class="org-src-container">
 
 <pre><code class=" ruby" >Facter.add('ip') do
@@ -271,8 +295,8 @@ $ facter ip
 </pre>
 
 </section>
-<section id="slide-orgae000a8">
-<h4 id="orgae000a8">on windows though&#x2026;</h4>
+<section id="slide-org581a3d8">
+<h4 id="org581a3d8">on windows though&#x2026;</h4>
 <pre class="example">
 $ facter ip
 </pre>
@@ -311,8 +335,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-org657539d">
-<h4 id="org657539d">the elephant in the room</h4>
+<section id="slide-orgdc73e6d">
+<h4 id="orgdc73e6d">the elephant in the room</h4>
 <ul>
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
@@ -336,8 +360,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-org5237bcc">
-<h4 id="org5237bcc">what we knew</h4>
+<section id="slide-org5e4402f">
+<h4 id="org5e4402f">what we knew</h4>
 <ul>
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
@@ -346,8 +370,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 
 </section>
-<section id="slide-org297e1b0">
-<h4 id="org297e1b0">next steps</h4>
+<section id="slide-orgf44b244">
+<h4 id="orgf44b244">next steps</h4>
 <ul>
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
 
@@ -368,28 +392,28 @@ $ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </pre>
 
 </section>
-<section id="slide-orgbbc243b">
-<h4 id="orgbbc243b">what we could have done</h4>
+<section id="slide-org785f105">
+<h4 id="org785f105">what we could have done</h4>
 <img class="stretch" src="img/drake-no.jpg">
 
 </section>
-<section id="slide-orgb068515">
-<h4 id="orgb068515">what we could have done</h4>
+<section id="slide-orgecf531b">
+<h4 id="orgecf531b">what we could have done</h4>
 <img class="stretch" src="img/drake-no-1.jpg">
 
 </section>
-<section id="slide-org0a82e9b">
-<h4 id="org0a82e9b">what we did</h4>
+<section id="slide-orga922ab8">
+<h4 id="orga922ab8">what we did</h4>
 <img class="stretch" src="img/drake-yes.jpg">
 
 </section>
-<section id="slide-orga9788e8">
-<h4 id="orga9788e8">what we did</h4>
+<section id="slide-org06fa690">
+<h4 id="org06fa690">what we did</h4>
 <img class="stretch" src="img/drake-yes-1.jpg">
 
 </section>
-<section id="slide-org6e16c07">
-<h4 id="org6e16c07">windows sockets?</h4>
+<section id="slide-org05e3bd1">
+<h4 id="org05e3bd1">windows sockets?</h4>
 <ul>
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
 
@@ -401,8 +425,8 @@ $ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </ul>
 
 </section>
-<section id="slide-org64d3b7b">
-<h4 id="org64d3b7b"><code>NtSocketsInitialized</code></h4>
+<section id="slide-org1b43789">
+<h4 id="org1b43789"><code>NtSocketsInitialized</code></h4>
 <ul>
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
 
@@ -436,8 +460,8 @@ after preprocessing, the bit becomes:
 </ul>
 
 </section>
-<section id="slide-org754fb2e">
-<h4 id="org754fb2e">getting to the point</h4>
+<section id="slide-org2f58f4a">
+<h4 id="org2f58f4a">getting to the point</h4>
 <ul class="fragment appear">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
@@ -463,8 +487,8 @@ to getting called <b>once</b>
 </ul>
 
 </section>
-<section id="slide-org773b042">
-<h4 id="org773b042"></h4>
+<section id="slide-orgb455c9c">
+<h4 id="orgb455c9c"></h4>
 <ul>
 <li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
@@ -483,8 +507,8 @@ to getting called <b>once</b>
 </div>
 
 </section>
-<section id="slide-org9fc86d3" class="no-center">
-<h4 id="org9fc86d3">fixing stuff</h4>
+<section id="slide-org2147317" class="no-center">
+<h4 id="org2147317">fixing stuff</h4>
 <ul>
 <li>before calling <code>ruby_sysinit</code></li>
 
@@ -510,8 +534,8 @@ Failed to open TCP connection to api.ipify.org:80 (getaddrinfo: Either the appli
 </pre>
 
 </section>
-<section id="slide-org83a0925" class="no-center">
-<h4 id="org83a0925">fixing stuff</h4>
+<section id="slide-orge54057d" class="no-center">
+<h4 id="orge54057d">fixing stuff</h4>
 <ul>
 <li>after calling <code>ruby_sysinit</code></li>
 
@@ -540,8 +564,8 @@ int main()
 {"ip":"192.69.65.12"}
 </pre>
 </section>
-<section id="slide-org5579bf7" data-background="#006400">
-<h4 id="org5579bf7">finishing up</h4>
+<section id="slide-orge2f0f4d" data-background="#006400">
+<h4 id="orge2f0f4d">finishing up</h4>
 <ul>
 <li>opened a pull request on GitHub for <code>ruby/ruby</code></li>
 
@@ -549,8 +573,8 @@ int main()
 <img class="stretch" src="img/ruby-github-open.png">
 
 </section>
-<section id="slide-org8ea09cf" data-background="#483D8B">
-<h4 id="org8ea09cf">finishing up</h4>
+<section id="slide-orga5f2851" data-background="#483D8B">
+<h4 id="orga5f2851">finishing up</h4>
 <ul>
 <li>merged after almost 2 months</li>
 
@@ -558,11 +582,33 @@ int main()
 <img class="stretch" src="img/ruby-github-merged.png">
 
 </section>
-<section id="slide-org5b8c9dc">
-<h4 id="org5b8c9dc">conclusions</h4>
+<section id="slide-org548d6e9">
+<h4 id="org548d6e9">conclusions</h4>
 <ul>
 <li>Ruby API documentation is not up-to-date, especially for less-used platforms</li>
 <li>the best way to understand things is to go through the code</li>
+
+</ul>
+
+</section>
+<section id="slide-orgae72de5">
+<h4 id="orgae72de5">links &amp; questions</h4>
+<ul>
+<li>presentation: <a href="https://gabrielnagy.github.io/open-source-presentation">gabrielnagy.github.io/open-source-presentation</a></li>
+<li>our projects:
+<ul>
+<li><a href="https://github.com/puppetlabs/puppet">puppetlabs/puppet</a></li>
+<li><a href="https://github.com/puppetlabs/facter">puppetlabs/facter</a></li>
+<li><a href="https://github.com/puppetlabs/puppet-agent">puppetlabs/puppet-agent</a></li>
+
+</ul></li>
+<li>ruby:
+<ul>
+<li><a href="https://silverhammermba.github.io/emberb/embed/">Running Ruby in C</a></li>
+<li><a href="https://silverhammermba.github.io/emberb/c/">The Ruby C API</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup">WSAStartup function (winsock.h) - Win32 apps | Microsoft Docs</a></li>
+
+</ul></li>
 
 </ul>
 </section>
