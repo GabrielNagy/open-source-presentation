@@ -1,11 +1,11 @@
 # Local IspellDict: english
 #+PROPERTY: header-args :eval no
 #+STARTUP: showeverything
-#+REVEAL_TRANS: slide
+#+REVEAL_TRANS: fade
 #+REVEAL_THEME: blood
 #+REVEAL_TITLE_SLIDE: <h2>%t</h2>%a
-#+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800
-#+REVEAL_HIGHLIGHT_CSS: data/monokai.css
+#+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800 reveal_mousewheel:t reveal_generate_ids:t reveal_history:t
+#+REVEAL_HIGHLIGHT_CSS: data/an-old-hope.css
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_EXTRA_CSS: ./data/index.css
 #+REVEAL_HLEVEL: 2
@@ -76,7 +76,7 @@ user { 'gabi':
 - all upgrades were problematic
 
 ** ~ruby~
-   - CVE release was a no-op
+   - hotfix release did not install
    - the version we had to upgrade to was 2.4.8
    #+REVEAL_HTML: <img class="stretch" src="img/ruby-release.png">
    - 2.4.9 was released a couple of minutes before we checked [[https://www.ruby-lang.org][ruby-lang.org]]
@@ -93,10 +93,17 @@ user { 'gabi':
    - issue was fixed after the release
    - until new releases come out we have to live with patches
 
+** conclusions?
+   - open-source projects are widely used and understaffed
+     - ~curl~ has been maintained for over 20 years by a single person
+     - ~openssl~ had 2 developers before the Heartbleed vulnerability
+     - ~ruby~ - around 20 people are actively contributing
+   - most of the time projects are maintained through volunteer efforts
+
 * how the community helps
 - had to update our compile/link flags for our vendored libraries and binaries
-  - easy: check how Debian or CentOS build our packages
-- puppet release 6.11.0 had a regression
+  - easy: check how Debian/CentOS/Arch build our packages
+- our latest ~puppet~ release had a regression
   - community provided a fix shortly after we released
 
 * how we contribute back
@@ -105,7 +112,7 @@ user { 'gabi':
 
 ** segfaulting with ~facter~
    #+begin_src ruby
-     Facter.add('test') do
+     Facter.add('ip') do
        url = 'https://api.ipify.org?format=json'
        # {"ip":"79.114.90.219"}
        response = open(url).read
@@ -116,42 +123,43 @@ user { 'gabi':
      end
    #+end_src
    - custom fact that queries an API for your public IP
-   : $ facter test
+   : $ facter ip
    : 79.114.90.219
 
 *** on windows though...
-   #+REVEAL_HTML: <div style="font-size: 0.7em;">
-   #+begin_src
+    : $ facter ip
+    #+REVEAL_HTML: <div style="font-size: 0.78em;">
+    #+begin_src
 C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
 ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
 
 -- Control frame information -----------------------------------------------
 c:0024 p:---- s:0165 e:000164 CFUNC  :wait_readable
-c:0023 p:0093 s:0160 e:000159 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45
-c:0022 p:0557 s:0153 E:001568 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:981
-c:0021 p:0004 s:0140 e:000139 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:920
-c:0020 p:0029 s:0136 e:000135 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:909
-c:0019 p:0521 s:0132 e:000131 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:337
-c:0018 p:0017 s:0111 e:000110 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:755
-c:0017 p:0029 s:0104 e:000103 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
+c:0023 p:0093 s:0160 e:000159 METHOD C:/puppet/lib/ruby/2.5.0/net/protocol.rb:45
+c:0022 p:0557 s:0153 E:001568 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:981
+c:0021 p:0004 s:0140 e:000139 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:920
+c:0020 p:0029 s:0136 e:000135 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:909
+c:0019 p:0521 s:0132 e:000131 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:337
+c:0018 p:0017 s:0111 e:000110 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:755
+c:0017 p:0029 s:0104 e:000103 BLOCK  C:/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
 c:0016 p:---- s:0101 e:000100 CFUNC  :catch
-c:0015 p:0365 s:0096 E:0010e8 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:224
-c:0014 p:0328 s:0081 e:000080 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:165
-c:0013 p:0018 s:0069 e:000068 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:735
-c:0012 p:0071 s:0063 e:000062 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:35
+c:0015 p:0365 s:0096 E:0010e8 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:224
+c:0014 p:0328 s:0081 e:000080 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:165
+c:0013 p:0018 s:0069 e:000068 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:735
+c:0012 p:0071 s:0063 e:000062 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:35
 c:0011 p:0007 s:0055 e:000054 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:10
-c:0010 p:0030 s:0052 E:000948 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:93
-c:0009 p:0005 s:0046 e:000045 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
+c:0010 p:0030 s:0052 E:000948 BLOCK  C:/puppet/lib/ruby/2.5.0/timeout.rb:93
+c:0009 p:0005 s:0046 e:000045 BLOCK  C:/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
 c:0008 p:---- s:0043 e:000042 CFUNC  :catch
-c:0007 p:0044 s:0038 e:000037 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33
-c:0006 p:0113 s:0032 E:000650 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:108
+c:0007 p:0044 s:0038 e:000037 METHOD C:/puppet/lib/ruby/2.5.0/timeout.rb:33
+c:0006 p:0113 s:0032 E:000650 METHOD C:/puppet/lib/ruby/2.5.0/timeout.rb:108
 c:0005 p:0021 s:0020 E:000748 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:9 [FINISH]
 c:0004 p:---- s:0014 e:000013 CFUNC  :instance_eval
 c:0003 p:---- s:0011 e:000010 CFUNC  :add
 c:0002 p:0034 s:0006 E:000790 TOP    C:/cygwin64/home/Administrator/facts/ip.rb:5 [FINISH]
 c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
-   #+end_src
-   #+REVEAL_HTML: </div>
+    #+end_src
+    #+REVEAL_HTML: </div>
 
 *** the elephant in the room
     - this code is not directly evaluated by the Ruby interpreter
@@ -181,23 +189,25 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     : $ git diff --stat v2_4_5..v2_5_3
     : ...
     : 6101 files changed, 340476 insertions(+), 79434 deletions(-)
-    - thousands of commits, hundreds of thousands of lines
-    - only 60 commits on the windows tree
-    : git rev-list --count v2_4_5..v2_5_3 -- win32/
-    : 60
+    #+ATTR_REVEAL: :frag appear
+    - only 60 commits under ~win32/~
+    #+ATTR_REVEAL: :frag appear
+    #+begin_src 
+    $ git rev-list --count v2_4_5..v2_5_3 -- win32/
+    60
+    #+end_src
 
 *** what we could have done
-    #+ATTR_REVEAL: :frag (none appear appear)
-    - use ~git-bisect(1)~ to find the culprit
-    - programatically determine which commit is responsible by building the project and testing the problematic fact
-    - 
-      #+REVEAL_HTML: <img src="img/drake-no.jpg" width="50%">
+    #+REVEAL_HTML: <img class="stretch" src="img/drake-no.jpg">
    
+*** what we could have done
+    #+REVEAL_HTML: <img class="stretch" src="img/drake-no-1.jpg">
+
 *** what we did
-    #+ATTR_REVEAL: :frag (none appear)
-    - figure it out by manually going through each commit
-    - 
-      #+REVEAL_HTML: <img src="img/drake-yes.jpg" width="50%">
+    #+REVEAL_HTML: <img class="stretch" src="img/drake-yes.jpg">
+
+*** what we did
+    #+REVEAL_HTML: <img class="stretch" src="img/drake-yes-1.jpg">
 
 *** windows sockets?
     - a chunk of commit ~e33b169 - win32.c: vm_exit_handler~ 
@@ -256,7 +266,10 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     #+end_src
 
 *** fixing stuff
-    - we try calling the function in a simple C program
+    :PROPERTIES:
+    :reveal_extra_attr: class="no-center"
+    :END:
+    - before calling ~ruby_sysinit~
     #+begin_src C
       #include <ruby.h>
 
@@ -276,7 +289,10 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
       Failed to open TCP connection to api.ipify.org:80 (getaddrinfo: Either the application has not called WSAStartup, or WSAStartup failed.) (SocketError)
     #+end_src
 
-*** 
+*** fixing stuff
+    :PROPERTIES:
+    :reveal_extra_attr: class="no-center"
+    :END:
     - after calling ~ruby_sysinit~
     #+begin_src C
       #include <ruby.h>
@@ -284,8 +300,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
       int main()
       {
           ruby_init(); // sets up some basic things
-          ruby_options(3, options); // sets up more stuff
           char* options[] = { "-v", "-e", "" };
+          ruby_options(3, options); // sets up more stuff
 
           int sysinit_opts_size = 1;
           char const* sysinit_opts[] = { "ruby" };
@@ -300,4 +316,23 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     #+begin_src
     {"ip":"192.69.65.12"}
     #+end_src
+*** finishing up
+    :PROPERTIES:
+    :reveal_background: #006400
+    :END:
+    - opened a pull request on GitHub for ~ruby/ruby~
+    #+REVEAL_HTML: <img class="stretch" src="img/ruby-github-open.png">
+
+*** finishing up
+    :PROPERTIES:
+    :reveal_background: #483D8B
+    :END:
+    
+    - merged after almost 2 months
+    #+REVEAL_HTML: <img class="stretch" src="img/ruby-github-merged.png">
+
+*** conclusions
+    - Ruby API documentation is not up-to-date, especially for less-used platforms
+    - the best way to understand things is to go through the code
+
 
