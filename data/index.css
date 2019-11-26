@@ -17,7 +17,7 @@ body {
   }
 
 h1 { margin: 1rem 0 .5rem 0; }
-h2, h3 { margin: 1.5rem 0 .5rem 0; }
+h2, h3 { margin: 1.5rem 0 .5rem 0; font-size: 50%; }
 ul, ol { margin: 0.5rem 0 .5rem 0; }
 p, li { margin: 0 0 .4rem 0; }
 
@@ -25,8 +25,7 @@ a {
   color: #00568a;
   text-decoration: none; }
 
-a[href^="http"] { color: #7ab516; }
-a[href^="https://oer.gitlab.io"] { color: #00568a; }
+a[href^="http"] { color: #a23; }
 
 /* Show icon for outgoing/external link.
    Positioning without line break after icon based on this:
@@ -60,3 +59,7 @@ pre {
 .status {
   margin: 1.5rem 0 0 0;
   font-size: 90%; }
+
+.no-center {
+  top: 40px !important;
+}

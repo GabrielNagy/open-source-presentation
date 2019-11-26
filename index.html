@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="./reveal.js/css/theme/blood.css" id="theme"/>
 
 <link rel="stylesheet" href="./data/index.css"/>
-<link rel="stylesheet" href="data/monokai.css"/>
+<link rel="stylesheet" href="data/an-old-hope.css"/>
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -32,8 +33,8 @@
 </section>
 
 <section>
-<section id="slide-org93f584e">
-<h2 id="org93f584e"><code>$ whoami</code></h2>
+<section id="slide-orge70d2a5">
+<h2 id="orge70d2a5"><code>$ whoami</code></h2>
 <ul>
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
@@ -44,8 +45,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgf4ddd4a">
-<h2 id="orgf4ddd4a">what is this?</h2>
+<section id="slide-org879a6f2">
+<h2 id="org879a6f2">what is this?</h2>
 <ul>
 <li>overview of our projects</li>
 <li>how we benefit from using, and being open source ourselves</li>
@@ -56,8 +57,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org0885bc7">
-<h2 id="org0885bc7">puppet-agent</h2>
+<section id="slide-orgfe071ac">
+<h2 id="orgfe071ac">puppet-agent</h2>
 <ul>
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
@@ -75,8 +76,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org84aa450">
-<h3 id="org84aa450"><code>puppet</code></h3>
+<section id="slide-org89f631c">
+<h3 id="org89f631c"><code>puppet</code></h3>
 <ul>
 <li>configuration management tool, declarative language</li>
 
@@ -88,7 +89,7 @@ $ puppet resource user gabi
 
 <div class="org-src-container">
 
-<pre><code class="" puppet >user { 'gabi':
+<pre><code class=" puppet" >user { 'gabi':
   ensure  =&gt; 'present',
   comment =&gt; 'gabi',
   gid     =&gt; 1000,
@@ -103,8 +104,8 @@ $ puppet resource user gabi
 </section>
 </section>
 <section>
-<section id="slide-orgcb1abd8">
-<h3 id="orgcb1abd8"><code>facter</code></h3>
+<section id="slide-orgab59925">
+<h3 id="orgab59925"><code>facter</code></h3>
 <ul>
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
@@ -118,7 +119,7 @@ $ facter system_uptime --json
 
 <div class="org-src-container">
 
-<pre><code class="" js >{
+<pre><code class=" js" >{
   "system_uptime": {
     "days": 0,
     "hours": 1,
@@ -132,8 +133,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org4ad3f46">
-<h2 id="org4ad3f46">how we use open source</h2>
+<section id="slide-org134dff1">
+<h2 id="org134dff1">how we use open source</h2>
 <ul>
 <li class="fragment appear">keep our runtime up-to-date by patching CVEs</li>
 <li class="fragment appear">October vulnerabilities:
@@ -150,24 +151,24 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org4789c1d">
-<h3 id="org4789c1d"><code>ruby</code></h3>
+<section id="slide-org93cd851">
+<h3 id="org93cd851"><code>ruby</code></h3>
 <ul>
-<li>CVE release was a no-op</li>
+<li>hotfix release did not install</li>
 <li>the version we had to upgrade to was 2.4.8</li>
 
 </ul>
 <img class="stretch" src="img/ruby-release.png">
 <ul>
-<li>2.4.9 was released a couple of minutes before we checked <a href="https://www.ruby-lang.org/">ruby-lang.org</a></li>
+<li>2.4.9 was released a couple of minutes before we checked <a href="https://www.ruby-lang.org">ruby-lang.org</a></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgd7616e1">
-<h3 id="orgd7616e1"><code>openssl</code></h3>
+<section id="slide-orgd5cb30d">
+<h3 id="orgd5cb30d"><code>openssl</code></h3>
 <ul>
 <li>new version did not compile on Windows</li>
 
@@ -182,8 +183,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-orgb096b89">
-<h3 id="orgb096b89"><code>curl</code></h3>
+<section id="slide-org63c7f94">
+<h3 id="org63c7f94"><code>curl</code></h3>
 <ul>
 <li>new version did not compile on Solaris</li>
 
@@ -198,15 +199,32 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-orgc2cc1f1">
-<h2 id="orgc2cc1f1">how the community helps</h2>
+<section id="slide-orge15dbfd">
+<h3 id="orge15dbfd">conclusions?</h3>
+<ul>
+<li>open-source projects are widely used and understaffed
+<ul>
+<li><code>curl</code> has been maintained for over 20 years by a single person</li>
+<li><code>openssl</code> had 2 developers before the Heartbleed vulnerability</li>
+<li><code>ruby</code> - around 20 people are actively contributing</li>
+
+</ul></li>
+<li>most of the time projects are maintained through volunteer efforts</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2303568">
+<h2 id="org2303568">how the community helps</h2>
 <ul>
 <li>had to update our compile/link flags for our vendored libraries and binaries
 <ul>
-<li>easy: check how Debian or CentOS build our packages</li>
+<li>easy: check how Debian/CentOS/Arch build our packages</li>
 
 </ul></li>
-<li>puppet release 6.11.0 had a regression
+<li>our latest <code>puppet</code> release had a regression
 <ul>
 <li>community provided a fix shortly after we released</li>
 
@@ -217,8 +235,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org7ded0f8">
-<h2 id="org7ded0f8">how we contribute back</h2>
+<section id="slide-org15e9da3">
+<h2 id="org15e9da3">how we contribute back</h2>
 <ul>
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
 <li>sometimes we discover issues</li>
@@ -228,11 +246,11 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-orgf627c4a">
-<h3 id="orgf627c4a">segfaulting with <code>facter</code></h3>
+<section id="slide-orgac07b92">
+<h3 id="orgac07b92">segfaulting with <code>facter</code></h3>
 <div class="org-src-container">
 
-<pre><code class="" ruby >Facter.add('test') do
+<pre><code class=" ruby" >Facter.add('ip') do
   url = 'https://api.ipify.org?format=json'
   # {"ip":"79.114.90.219"}
   response = open(url).read
@@ -248,38 +266,42 @@ end
 
 </ul>
 <pre class="example">
-$ facter test
+$ facter ip
 79.114.90.219
 </pre>
 
 </section>
-<section id="slide-orga7bc572">
-<h4 id="orga7bc572">on windows though&#x2026;</h4>
-<div style="font-size: 0.7em;">
+<section id="slide-org741f6a2">
+<h4 id="org741f6a2">on windows though&#x2026;</h4>
+<pre class="example">
+$ facter ip
+</pre>
+
+<div style="font-size: 0.78em;">
 <pre  class="example">
 C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
 ruby 2.5.3p105 (2018-10-18 revision 65156) [x64-mingw32]
 
 -- Control frame information -----------------------------------------------
 c:0024 p:---- s:0165 e:000164 CFUNC  :wait_readable
-c:0023 p:0093 s:0160 e:000159 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45
-c:0022 p:0557 s:0153 E:001568 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:981
-c:0021 p:0004 s:0140 e:000139 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:920
-c:0020 p:0029 s:0136 e:000135 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/http.rb:909
-c:0019 p:0521 s:0132 e:000131 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:337
-c:0018 p:0017 s:0111 e:000110 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:755
-c:0017 p:0029 s:0104 e:000103 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
+c:0023 p:0093 s:0160 e:000159 METHOD C:/puppet/lib/ruby/2.5.0/net/protocol.rb:45
+c:0022 p:0557 s:0153 E:001568 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:981
+c:0021 p:0004 s:0140 e:000139 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:920
+c:0020 p:0029 s:0136 e:000135 METHOD C:/puppet/lib/ruby/2.5.0/net/http.rb:909
+c:0019 p:0521 s:0132 e:000131 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:337
+c:0018 p:0017 s:0111 e:000110 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:755
+c:0017 p:0029 s:0104 e:000103 BLOCK  C:/puppet/lib/ruby/2.5.0/open-uri.rb:226 [FINISH]
 c:0016 p:---- s:0101 e:000100 CFUNC  :catch
-c:0015 p:0365 s:0096 E:0010e8 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:224
-c:0014 p:0328 s:0081 e:000080 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:165
-c:0013 p:0018 s:0069 e:000068 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:735
-c:0012 p:0071 s:0063 e:000062 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/open-uri.rb:35
+c:0015 p:0365 s:0096 E:0010e8 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:224
+c:0014 p:0328 s:0081 e:000080 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:165
+c:0013 p:0018 s:0069 e:000068 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:735
+c:0012 p:0071 s:0063 e:000062 METHOD C:/puppet/lib/ruby/2.5.0/open-uri.rb:35
 c:0011 p:0007 s:0055 e:000054 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:10
-c:0010 p:0030 s:0052 E:000948 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:93
-c:0009 p:0005 s:0046 e:000045 BLOCK  C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
+c:0010 p:0030 s:0052 E:000948 BLOCK  C:/puppet/lib/ruby/2.5.0/timeout.rb:93
+c:0009 p:0005 s:0046 e:000045 BLOCK  C:/puppet/lib/ruby/2.5.0/timeout.rb:33 [FINISH]
 c:0008 p:---- s:0043 e:000042 CFUNC  :catch
-c:0007 p:0044 s:0038 e:000037 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:33
-c:0006 p:0113 s:0032 E:000650 METHOD C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/timeout.rb:108
+c:0007 p:0044 s:0038 e:000037 METHOD C:/puppet/lib/ruby/2.5.0/timeout.rb:33
+c:0006 p:0113 s:0032 E:000650 METHOD C:/puppet/lib/ruby/2.5.0/timeout.rb:108
 c:0005 p:0021 s:0020 E:000748 BLOCK  C:/cygwin64/home/Administrator/facts/ip.rb:9 [FINISH]
 c:0004 p:---- s:0014 e:000013 CFUNC  :instance_eval
 c:0003 p:---- s:0011 e:000010 CFUNC  :add
@@ -289,8 +311,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-orgb54988c">
-<h4 id="orgb54988c">the elephant in the room</h4>
+<section id="slide-orgf3c481e">
+<h4 id="orgf3c481e">the elephant in the room</h4>
 <ul>
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
@@ -298,12 +320,12 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 <div class="org-src-container">
 
-<pre><code class="" C++ >VALUE module::ruby_add(int argc, VALUE* argv, VALUE self)
+<pre><code class=" C++" >VALUE module::ruby_add(int argc, VALUE* argv, VALUE self)
 {
-    return safe_eval("Facter.add", [&]() {
-	auto const& ruby = api::instance();
+    return safe_eval("Facter.add", [&amp;]() {
+	auto const&amp; ruby = api::instance();
 
-	VALUE fact_self = from_self(self)->create_fact(argv[0]);
+	VALUE fact_self = from_self(self)-&gt;create_fact(argv[0]);
 
 	...
 
@@ -314,8 +336,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-orgbda5783">
-<h4 id="orgbda5783">what we knew</h4>
+<section id="slide-orga42c2ab">
+<h4 id="orga42c2ab">what we knew</h4>
 <ul>
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
@@ -324,8 +346,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 
 </section>
-<section id="slide-org0bb3eef">
-<h4 id="org0bb3eef">next steps</h4>
+<section id="slide-orgea8bc69">
+<h4 id="orgea8bc69">next steps</h4>
 <ul>
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
 
@@ -336,38 +358,38 @@ $ git diff --stat v2_4_5..v2_5_3
 6101 files changed, 340476 insertions(+), 79434 deletions(-)
 </pre>
 
-<ul>
-<li>thousands of commits, hundreds of thousands of lines</li>
-<li>only 60 commits on the windows tree</li>
+<ul class="fragment appear">
+<li>only 60 commits under <code>win32/</code></li>
 
 </ul>
-<pre class="example">
-git rev-list --count v2_4_5..v2_5_3 -- win32/
+<pre  class="fragment appear">
+$ git rev-list --count v2_4_5..v2_5_3 -- win32/
 60
 </pre>
 
 </section>
-<section id="slide-org5f36876">
-<h4 id="org5f36876">what we could have done</h4>
-<ul>
-<li>use <code>git-bisect(1)</code> to find the culprit</li>
-<li class="fragment appear">programatically determine which commit is responsible by building the project and testing the problematic fact</li>
-<li class="fragment appear"><img src="img/drake-no.jpg" width="50%"></li>
-
-</ul>
+<section id="slide-org8b9ad02">
+<h4 id="org8b9ad02">what we could have done</h4>
+<img class="stretch" src="img/drake-no.jpg">
 
 </section>
-<section id="slide-org89ee453">
-<h4 id="org89ee453">what we did</h4>
-<ul>
-<li>figure it out by manually going through each commit</li>
-<li class="fragment appear"><img src="img/drake-yes.jpg" width="50%"></li>
-
-</ul>
+<section id="slide-orga4bbc82">
+<h4 id="orga4bbc82">what we could have done</h4>
+<img class="stretch" src="img/drake-no-1.jpg">
 
 </section>
-<section id="slide-org2e3d8e9">
-<h4 id="org2e3d8e9">windows sockets?</h4>
+<section id="slide-orga0048ce">
+<h4 id="orga0048ce">what we did</h4>
+<img class="stretch" src="img/drake-yes.jpg">
+
+</section>
+<section id="slide-orgdcd74fc">
+<h4 id="orgdcd74fc">what we did</h4>
+<img class="stretch" src="img/drake-yes-1.jpg">
+
+</section>
+<section id="slide-org81a6be3">
+<h4 id="org81a6be3">windows sockets?</h4>
 <ul>
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
 
@@ -379,15 +401,15 @@ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </ul>
 
 </section>
-<section id="slide-org40f7ce4">
-<h4 id="org40f7ce4"><code>NtSocketsInitialized</code></h4>
+<section id="slide-org4194778">
+<h4 id="org4194778"><code>NtSocketsInitialized</code></h4>
 <ul>
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre><code class="" C >if (!NtSocketsInitialized) {
+<pre><code class=" C" >if (!NtSocketsInitialized) {
     StartSockets();
 }
 </code></pre>
@@ -402,7 +424,7 @@ after preprocessing, the bit becomes:
 
 <div class="org-src-container">
 
-<pre><code class="" C >if (!1) {
+<pre><code class=" C" >if (!1) {
     StartSockets();
 }
 </code></pre>
@@ -414,8 +436,8 @@ after preprocessing, the bit becomes:
 </ul>
 
 </section>
-<section id="slide-org3be557b">
-<h4 id="org3be557b">getting to the point</h4>
+<section id="slide-org71929fb">
+<h4 id="org71929fb">getting to the point</h4>
 <ul class="fragment appear">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
@@ -424,7 +446,7 @@ to getting called <b>once</b>
 
 <div class="org-src-container">
 
-<pre><code class="" C >void rb_w32_sysinit(int *argc, char ***argv)
+<pre><code class=" C" >void rb_w32_sysinit(int *argc, char ***argv)
 {
     // ...
     tzset();
@@ -441,8 +463,8 @@ to getting called <b>once</b>
 </ul>
 
 </section>
-<section id="slide-org2330b5b">
-<h4 id="org2330b5b"></h4>
+<section id="slide-org3bbaf40">
+<h4 id="org3bbaf40"></h4>
 <ul>
 <li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
@@ -450,7 +472,7 @@ to getting called <b>once</b>
 </ul>
 <div class="org-src-container">
 
-<pre><code class="" C >void ruby_sysinit(int *argc, char ***argv)
+<pre><code class=" C" >void ruby_sysinit(int *argc, char ***argv)
 {
 #if defined(_WIN32)
     rb_w32_sysinit(argc, argv);
@@ -461,15 +483,15 @@ to getting called <b>once</b>
 </div>
 
 </section>
-<section id="slide-org1c81d93">
-<h4 id="org1c81d93">fixing stuff</h4>
+<section id="slide-orgec25dc6" class="no-center">
+<h4 id="orgec25dc6">fixing stuff</h4>
 <ul>
-<li>we try calling the function in a simple C program</li>
+<li>before calling <code>ruby_sysinit</code></li>
 
 </ul>
 <div class="org-src-container">
 
-<pre><code class="" C >#include <ruby.h>
+<pre><code class=" C" >#include &lt;ruby.h&gt;
 
 int main()
 {
@@ -488,25 +510,25 @@ Failed to open TCP connection to api.ipify.org:80 (getaddrinfo: Either the appli
 </pre>
 
 </section>
-<section id="slide-org4d8066c">
-<h4 id="org4d8066c"></h4>
+<section id="slide-orgef7fbfc" class="no-center">
+<h4 id="orgef7fbfc">fixing stuff</h4>
 <ul>
 <li>after calling <code>ruby_sysinit</code></li>
 
 </ul>
 <div class="org-src-container">
 
-<pre><code class="" C >#include <ruby.h>
+<pre><code class=" C" >#include &lt;ruby.h&gt;
 
 int main()
 {
     ruby_init(); // sets up some basic things
-    ruby_options(3, options); // sets up more stuff
     char* options[] = { "-v", "-e", "" };
+    ruby_options(3, options); // sets up more stuff
 
     int sysinit_opts_size = 1;
     char const* sysinit_opts[] = { "ruby" };
-    ruby_sysinit(&sysinit_opts_size, (char***)(&sysinit_opts));
+    ruby_sysinit(&amp;sysinit_opts_size, (char***)(&amp;sysinit_opts));
 
     rb_require("open-uri");
     rb_eval_string("puts open('http://api.ipify.org?format=json').read");
@@ -517,6 +539,32 @@ int main()
 <pre  class="fragment appear">
 {"ip":"192.69.65.12"}
 </pre>
+</section>
+<section id="slide-org25de2cd" data-background="#006400">
+<h4 id="org25de2cd">finishing up</h4>
+<ul>
+<li>opened a pull request on GitHub for <code>ruby/ruby</code></li>
+
+</ul>
+<img class="stretch" src="img/ruby-github-open.png">
+
+</section>
+<section id="slide-org0a2c679" data-background="#483D8B">
+<h4 id="org0a2c679">finishing up</h4>
+<ul>
+<li>merged after almost 2 months</li>
+
+</ul>
+<img class="stretch" src="img/ruby-github-merged.png">
+
+</section>
+<section id="slide-org4f439a6">
+<h4 id="org4f439a6">conclusions</h4>
+<ul>
+<li>Ruby API documentation is not up-to-date, especially for less-used platforms</li>
+<li>the best way to understand things is to go through the code</li>
+
+</ul>
 </section>
 </section>
 </div>
@@ -530,13 +578,14 @@ Reveal.initialize({
 
 controls: true,
 progress: true,
-history: false,
+history: true,
 center: true,
 slideNumber: 'c',
 rollingLinks: false,
 keyboard: true,
-mouseWheel: false,
+mouseWheel: true,
 fragmentInURL: false,
+hashOneBasedIndex: false,
 pdfSeparateFragments: true,
 
 overview: true,
@@ -544,18 +593,14 @@ width: 1200,
 height: 800,
 
 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transition: Reveal.getQueryHash().transition || 'fade', // see README of reveal.js for options
 transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
-// Optional libraries used to extend on reveal.js
+// Optional libraries used to extend reveal.js
 dependencies: [
  { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
  { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
 </script>
 </body>
