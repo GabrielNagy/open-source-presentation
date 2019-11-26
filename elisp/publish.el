@@ -23,6 +23,7 @@
 	     (expand-file-name
 	      "../emacs-reveal/" (file-name-directory load-file-name)))
 ; (require 'reveal-config)
+(require 'org-re-reveal)
 (setq org-reveal-root "./reveal.js"
       org-reveal-title-slide nil)
 

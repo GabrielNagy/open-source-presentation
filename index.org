@@ -5,7 +5,7 @@
 #+REVEAL_THEME: blood
 #+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800
 #+REVEAL_HIGHLIGHT_CSS: data/monokai.css
-#+REVEAL_PLUGINS: (notes)
+#+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_EXTRA_CSS: ./data/index.css
 #+REVEAL_HLEVEL: 2
 #+TITLE: Open Source: User, Maintainer, Contributor
@@ -189,14 +189,17 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     : 60
 
 *** what we could have done
-    #+ATTR_REVEAL: :frag (none appear)
+    #+ATTR_REVEAL: :frag (none appear appear)
     - use ~git-bisect(1)~ to find the culprit
     - programatically determine which commit is responsible by building the project and testing the problematic fact
+    - 
       #+REVEAL_HTML: <img src="img/drake-no.jpg" width="50%">
    
 *** what we did
+    #+ATTR_REVEAL: :frag (none appear)
     - figure it out by manually going through each commit
-    #+REVEAL_HTML: <img src="img/drake-yes.jpg" width="50%">
+    - 
+      #+REVEAL_HTML: <img src="img/drake-yes.jpg" width="50%">
 
 *** windows sockets?
     - a chunk of commit ~e33b169 - win32.c: vm_exit_handler~ 
