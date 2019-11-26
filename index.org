@@ -8,7 +8,7 @@
 #+REVEAL_HIGHLIGHT_CSS: data/an-old-hope.css
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_EXTRA_CSS: ./data/index.css
-#+REVEAL_HLEVEL: 2
+#+REVEAL_HLEVEL: 0
 #+TITLE: Open Source at Puppet
 #+AUTHOR: Gabriel Nagy
 #+DATE: <2019-11-28 Jo>
@@ -32,6 +32,9 @@
   - ~facter~ - Ruby gem (v2), and C++ binary and libraries (v3)
   - ~...~ - a bunch of other dependencies (Ruby, C++)
 - built, tested, and shipped for *45 OSes/platforms* (as of November)
+#+BEGIN_NOTES
+Debian, RedHat, Windows, Solaris, AIX, etc...
+#+END_NOTES
 
 ** ~puppet~
 - configuration management tool, declarative language
@@ -106,18 +109,18 @@ user { 'gabi':
      find out if someone else has done it already. it's open-source
      #+END_NOTES
 
-* how the community helps
+** how the community helps
 - had to update our compile/link flags for our vendored libraries and binaries
-  - easy: check how Debian/CentOS/Arch build our packages
+  - easy: check how Debian/CentOS/Arch build our packages and do the same
 - our latest ~puppet~ release had a regression
   - community provided a fix shortly after we released
-     #+BEGIN_NOTES
-     as a newcomer, puppet being open-source helped a lot. you can
-     search the internet for most issues and it's high chance that
-     someone else might have encountered what you are looking for
-     #+END_NOTES
+    #+BEGIN_NOTES
+    as a newcomer, puppet being open-source helped a lot. you can
+    search the internet for most issues and it's high chance that
+    someone else might have encountered what you are looking for
+    #+END_NOTES
 
-* how we contribute back
+** how we contribute back
   - we use ~ruby~ extensively on non-standard platforms
   - sometimes we discover issues...
 
