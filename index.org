@@ -3,7 +3,7 @@
 #+STARTUP: showeverything
 #+REVEAL_TRANS: fade
 #+REVEAL_THEME: blood
-#+REVEAL_TITLE_SLIDE: <h2>%t</h2>%a
+#+REVEAL_TITLE_SLIDE: <h4>%a</h4><h3>%t</h3>%e
 #+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800 reveal_mousewheel:t reveal_generate_ids:t reveal_history:t
 #+REVEAL_HIGHLIGHT_CSS: data/an-old-hope.css
 #+REVEAL_PLUGINS: (highlight notes)
@@ -12,16 +12,16 @@
 #+TITLE: Open Source at Puppet
 #+AUTHOR: Gabriel Nagy
 #+DATE: <2019-11-28 Jo>
-#+EMAIL: gabriel.nagy@puppet.com
+#+EMAIL: gabi@puppet.com
 
 * ~$ whoami~
 - Linux & FOSS user
 - at Puppet since May
-- working on awesome open-source projects
+- mostly working on open-source projects
 
 * what is this?
 - overview of our projects
-- how we benefit from using, and being open source ourselves
+- how we benefit from ~/using|being/~ open-source
 - why is open-source beneficial
 
 * puppet-agent
@@ -35,6 +35,7 @@
 
 ** ~puppet~
 - configuration management tool, declarative language
+- you declare the /final state/ of the environment
 
 : $ puppet resource user gabi
 #+BEGIN_SRC puppet
@@ -48,6 +49,7 @@ user { 'gabi':
   uid     => 1000,
 }
 #+END_SRC
+- ~puppet~ translates this into platform-specific instructions
 
 ** ~facter~
 - provides facts about the system (network, disks, memory, OS)
@@ -91,7 +93,7 @@ user { 'gabi':
    - new version did not compile on Solaris
    #+REVEAL_HTML: <img class="stretch" src="img/curl-release.png">
    - issue was fixed after the release
-   - until new releases come out we have to live with patches
+   - we need to patch ~curl~ and ~openssl~ until new releases come out
 
 ** conclusions?
    - open-source projects are widely used and understaffed
@@ -99,16 +101,25 @@ user { 'gabi':
      - ~openssl~ had 2 developers before the Heartbleed vulnerability
      - ~ruby~ - around 20 people are actively contributing
    - most of the time projects are maintained through volunteer efforts
+     #+BEGIN_NOTES
+     if something doesn't work, don't immediately try to fix it.
+     find out if someone else has done it already. it's open-source
+     #+END_NOTES
 
 * how the community helps
 - had to update our compile/link flags for our vendored libraries and binaries
   - easy: check how Debian/CentOS/Arch build our packages
 - our latest ~puppet~ release had a regression
   - community provided a fix shortly after we released
+     #+BEGIN_NOTES
+     as a newcomer, puppet being open-source helped a lot. you can
+     search the internet for most issues and it's high chance that
+     someone else might have encountered what you are looking for
+     #+END_NOTES
 
 * how we contribute back
   - we use ~ruby~ extensively on non-standard platforms
-  - sometimes we discover issues
+  - sometimes we discover issues...
 
 ** segfaulting with ~facter~
    #+begin_src ruby
@@ -327,7 +338,6 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     :PROPERTIES:
     :reveal_background: #483D8B
     :END:
-    
     - merged after almost 2 months
     #+REVEAL_HTML: <img class="stretch" src="img/ruby-github-merged.png">
 
@@ -335,4 +345,13 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     - Ruby API documentation is not up-to-date, especially for less-used platforms
     - the best way to understand things is to go through the code
 
-
+*** links & questions
+    - presentation: [[https://gabrielnagy.github.io/open-source-presentation][gabrielnagy.github.io/open-source-presentation]]
+    - our projects:
+      - [[https://github.com/puppetlabs/puppet][puppetlabs/puppet]]
+      - [[https://github.com/puppetlabs/facter][puppetlabs/facter]]
+      - [[https://github.com/puppetlabs/puppet-agent][puppetlabs/puppet-agent]]
+    - ruby:
+      - [[https://silverhammermba.github.io/emberb/embed/][Running Ruby in C]]
+      - [[https://silverhammermba.github.io/emberb/c/][The Ruby C API]]
+      - [[https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup][WSAStartup function (winsock.h) - Win32 apps | Microsoft Docs]]
