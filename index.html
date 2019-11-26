@@ -32,8 +32,8 @@
 <h4>Gabriel Nagy</h4><h3>Open Source at Puppet</h3><a href="mailto:gabi@puppet.com">gabi@puppet.com</a>
 </section>
 
-<section id="slide-orgfc88805">
-<h2 id="orgfc88805"><code>$ whoami</code></h2>
+<section id="slide-org2e20f69">
+<h2 id="org2e20f69"><code>$ whoami</code></h2>
 <ul>
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
@@ -42,8 +42,8 @@
 </ul>
 
 </section>
-<section id="slide-org2f9c114">
-<h2 id="org2f9c114">what is this?</h2>
+<section id="slide-org8efb287">
+<h2 id="org8efb287">what is this?</h2>
 <ul>
 <li>overview of our projects</li>
 <li>how we benefit from <code>/using|being/</code> open-source</li>
@@ -52,8 +52,8 @@
 </ul>
 
 </section>
-<section id="slide-orgb415cb0">
-<h2 id="orgb415cb0">puppet-agent</h2>
+<section id="slide-orgeb82445">
+<h2 id="orgeb82445">puppet-agent</h2>
 <ul>
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
@@ -67,10 +67,16 @@
 <li>built, tested, and shipped for <b>45 OSes/platforms</b> (as of November)</li>
 
 </ul>
+<aside class="notes">
+<p>
+Debian, RedHat, Windows, Solaris, AIX, etc&#x2026;
+</p>
+
+</aside>
 
 </section>
-<section id="slide-orgc226617">
-<h3 id="orgc226617"><code>puppet</code></h3>
+<section id="slide-orgd81da27">
+<h3 id="orgd81da27"><code>puppet</code></h3>
 <ul>
 <li>configuration management tool, declarative language</li>
 <li>you declare the <i>final state</i> of the environment</li>
@@ -100,8 +106,8 @@ $ puppet resource user gabi
 </ul>
 
 </section>
-<section id="slide-orgcef5f71">
-<h3 id="orgcef5f71"><code>facter</code></h3>
+<section id="slide-orga8a4493">
+<h3 id="orga8a4493"><code>facter</code></h3>
 <ul>
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
@@ -127,8 +133,8 @@ $ facter system_uptime --json
 </div>
 
 </section>
-<section id="slide-orgbaf0fab">
-<h2 id="orgbaf0fab">how we use open source</h2>
+<section id="slide-org81a385d">
+<h2 id="org81a385d">how we use open source</h2>
 <ul>
 <li class="fragment appear">keep our runtime up-to-date by patching CVEs</li>
 <li class="fragment appear">October vulnerabilities:
@@ -143,8 +149,8 @@ $ facter system_uptime --json
 </ul>
 
 </section>
-<section id="slide-orgcde0360">
-<h3 id="orgcde0360"><code>ruby</code></h3>
+<section id="slide-orgba3df57">
+<h3 id="orgba3df57"><code>ruby</code></h3>
 <ul>
 <li>hotfix release did not install</li>
 <li>the version we had to upgrade to was 2.4.8</li>
@@ -157,8 +163,8 @@ $ facter system_uptime --json
 </ul>
 
 </section>
-<section id="slide-orgc4f0ff0">
-<h3 id="orgc4f0ff0"><code>openssl</code></h3>
+<section id="slide-org0a6b2c6">
+<h3 id="org0a6b2c6"><code>openssl</code></h3>
 <ul>
 <li>new version did not compile on Windows</li>
 
@@ -171,8 +177,8 @@ $ facter system_uptime --json
 </ul>
 
 </section>
-<section id="slide-org4c4ec58">
-<h3 id="org4c4ec58"><code>curl</code></h3>
+<section id="slide-orgb6458ee">
+<h3 id="orgb6458ee"><code>curl</code></h3>
 <ul>
 <li>new version did not compile on Solaris</li>
 
@@ -185,8 +191,8 @@ $ facter system_uptime --json
 </ul>
 
 </section>
-<section id="slide-orgc6830fa">
-<h3 id="orgc6830fa">conclusions?</h3>
+<section id="slide-orgb560a4f">
+<h3 id="orgb560a4f">conclusions?</h3>
 <ul>
 <li>open-source projects are widely used and understaffed
 <ul>
@@ -209,12 +215,12 @@ find out if someone else has done it already. it&rsquo;s open-source
 </ul>
 
 </section>
-<section id="slide-org0713e9d">
-<h2 id="org0713e9d">how the community helps</h2>
+<section id="slide-org5a626a9">
+<h3 id="org5a626a9">how the community helps</h3>
 <ul>
 <li>had to update our compile/link flags for our vendored libraries and binaries
 <ul>
-<li>easy: check how Debian/CentOS/Arch build our packages</li>
+<li>easy: check how Debian/CentOS/Arch build our packages and do the same</li>
 
 </ul></li>
 <li>our latest <code>puppet</code> release had a regression
@@ -236,8 +242,8 @@ someone else might have encountered what you are looking for
 </ul>
 
 </section>
-<section id="slide-orga2adee3">
-<h2 id="orga2adee3">how we contribute back</h2>
+<section id="slide-orgf3a9a82">
+<h3 id="orgf3a9a82">how we contribute back</h3>
 <ul>
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
 <li>sometimes we discover issues&#x2026;</li>
@@ -245,8 +251,8 @@ someone else might have encountered what you are looking for
 </ul>
 
 </section>
-<section id="slide-orgbb076a4">
-<h3 id="orgbb076a4">segfaulting with <code>facter</code></h3>
+<section id="slide-org8918c21">
+<h3 id="org8918c21">segfaulting with <code>facter</code></h3>
 <div class="org-src-container">
 
 <pre><code class=" ruby" >Facter.add('ip') do
@@ -270,8 +276,8 @@ $ facter ip
 </pre>
 
 </section>
-<section id="slide-org3519684">
-<h4 id="org3519684">on windows though&#x2026;</h4>
+<section id="slide-org86f0153">
+<h4 id="org86f0153">on windows though&#x2026;</h4>
 <pre class="example">
 $ facter ip
 </pre>
@@ -310,8 +316,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-org8017251">
-<h4 id="org8017251">the elephant in the room</h4>
+<section id="slide-org596d2b8">
+<h4 id="org596d2b8">the elephant in the room</h4>
 <ul>
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
@@ -335,8 +341,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-org9d2c997">
-<h4 id="org9d2c997">what we knew</h4>
+<section id="slide-orgeaba56e">
+<h4 id="orgeaba56e">what we knew</h4>
 <ul>
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
@@ -345,8 +351,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 
 </section>
-<section id="slide-orgb2a700e">
-<h4 id="orgb2a700e">next steps</h4>
+<section id="slide-orgd6bb55a">
+<h4 id="orgd6bb55a">next steps</h4>
 <ul>
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
 
@@ -367,28 +373,28 @@ $ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </pre>
 
 </section>
-<section id="slide-orgb94218e">
-<h4 id="orgb94218e">what we could have done</h4>
+<section id="slide-org19c1982">
+<h4 id="org19c1982">what we could have done</h4>
 <img class="stretch" src="img/drake-no.jpg">
 
 </section>
-<section id="slide-orge52f955">
-<h4 id="orge52f955">what we could have done</h4>
+<section id="slide-org975e1b3">
+<h4 id="org975e1b3">what we could have done</h4>
 <img class="stretch" src="img/drake-no-1.jpg">
 
 </section>
-<section id="slide-orgf3c2f02">
-<h4 id="orgf3c2f02">what we did</h4>
+<section id="slide-orgad3b6aa">
+<h4 id="orgad3b6aa">what we did</h4>
 <img class="stretch" src="img/drake-yes.jpg">
 
 </section>
-<section id="slide-orgafaccd0">
-<h4 id="orgafaccd0">what we did</h4>
+<section id="slide-org946d409">
+<h4 id="org946d409">what we did</h4>
 <img class="stretch" src="img/drake-yes-1.jpg">
 
 </section>
-<section id="slide-org8c65466">
-<h4 id="org8c65466">windows sockets?</h4>
+<section id="slide-org7424885">
+<h4 id="org7424885">windows sockets?</h4>
 <ul>
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
 
@@ -400,8 +406,8 @@ $ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </ul>
 
 </section>
-<section id="slide-org6194f88">
-<h4 id="org6194f88"><code>NtSocketsInitialized</code></h4>
+<section id="slide-org4d53585">
+<h4 id="org4d53585"><code>NtSocketsInitialized</code></h4>
 <ul>
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
 
@@ -435,8 +441,8 @@ after preprocessing, the bit becomes:
 </ul>
 
 </section>
-<section id="slide-org161e75e">
-<h4 id="org161e75e">getting to the point</h4>
+<section id="slide-org0e7b935">
+<h4 id="org0e7b935">getting to the point</h4>
 <ul class="fragment appear">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
@@ -462,8 +468,8 @@ to getting called <b>once</b>
 </ul>
 
 </section>
-<section id="slide-orga852c0a">
-<h4 id="orga852c0a"></h4>
+<section id="slide-org41aa008">
+<h4 id="org41aa008"></h4>
 <ul>
 <li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
@@ -482,8 +488,8 @@ to getting called <b>once</b>
 </div>
 
 </section>
-<section id="slide-orgbe73296" class="no-center">
-<h4 id="orgbe73296">fixing stuff</h4>
+<section id="slide-orged70901" class="no-center">
+<h4 id="orged70901">fixing stuff</h4>
 <ul>
 <li>before calling <code>ruby_sysinit</code></li>
 
@@ -509,8 +515,8 @@ Failed to open TCP connection to api.ipify.org:80 (getaddrinfo: Either the appli
 </pre>
 
 </section>
-<section id="slide-org9c8bacd" class="no-center">
-<h4 id="org9c8bacd">fixing stuff</h4>
+<section id="slide-org3242ee9" class="no-center">
+<h4 id="org3242ee9">fixing stuff</h4>
 <ul>
 <li>after calling <code>ruby_sysinit</code></li>
 
@@ -539,8 +545,8 @@ int main()
 {"ip":"192.69.65.12"}
 </pre>
 </section>
-<section id="slide-orgde8a311" data-background="#006400">
-<h4 id="orgde8a311">finishing up</h4>
+<section id="slide-orgbfa20da" data-background="#006400">
+<h4 id="orgbfa20da">finishing up</h4>
 <ul>
 <li>opened a pull request on GitHub for <code>ruby/ruby</code></li>
 
@@ -548,8 +554,8 @@ int main()
 <img class="stretch" src="img/ruby-github-open.png">
 
 </section>
-<section id="slide-org9f246c7" data-background="#483D8B">
-<h4 id="org9f246c7">finishing up</h4>
+<section id="slide-org1993a67" data-background="#483D8B">
+<h4 id="org1993a67">finishing up</h4>
 <ul>
 <li>merged after almost 2 months</li>
 
@@ -557,8 +563,8 @@ int main()
 <img class="stretch" src="img/ruby-github-merged.png">
 
 </section>
-<section id="slide-org624e8c8">
-<h4 id="org624e8c8">conclusions</h4>
+<section id="slide-org8f3ce48">
+<h4 id="org8f3ce48">conclusions</h4>
 <ul>
 <li>Ruby API documentation is not up-to-date, especially for less-used platforms</li>
 <li>the best way to understand things is to go through the code</li>
@@ -566,8 +572,8 @@ int main()
 </ul>
 
 </section>
-<section id="slide-org751f495">
-<h4 id="org751f495">links &amp; questions</h4>
+<section id="slide-orgb0e6ab0">
+<h4 id="orgb0e6ab0">links &amp; questions</h4>
 <ul>
 <li>presentation: <a href="https://gabrielnagy.github.io/open-source-presentation">gabrielnagy.github.io/open-source-presentation</a></li>
 <li>our projects:
