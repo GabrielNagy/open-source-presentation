@@ -260,28 +260,46 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 *** fixing stuff
     - we try calling the function in a simple C program
     #+begin_src C
-      void ruby_sysinit(int *argc, char ***argv)
+      #include <ruby.h>
+
+      int main()
       {
-      #if defined(_WIN32)
-          rb_w32_sysinit(argc, argv);
-      #endif
-      ...
+          ruby_init(); // sets up some basic things
+          char* options[] = { "-v", "-e", "" };
+          ruby_options(3, options); // sets up more stuff
+
+          rb_require("open-uri");
+          rb_eval_string("puts open('http://api.ipify.org?format=json').read");
       }
     #+end_src
+    #+ATTR_REVEAL: :frag appear
+    #+begin_src
+      C:/tools/ruby26/lib/ruby/2.6.0/net/http.rb:949:in `rescue in block in connect':
+      Failed to open TCP connection to api.ipify.org:80 (getaddrinfo: Either the application has not called WSAStartup, or WSAStartup failed.) (SocketError)
+    #+end_src
+
+*** 
+    - after calling ~ruby_sysinit~
     #+begin_src C
-      void ruby_sysinit(int *argc, char ***argv)
+      #include <ruby.h>
+
+      int main()
       {
-      #if defined(_WIN32)
-          rb_w32_sysinit(argc, argv);
-      #endif
-      ...
+          ruby_init(); // sets up some basic things
+          ruby_options(3, options); // sets up more stuff
+          char* options[] = { "-v", "-e", "" };
+
+          int sysinit_opts_size = 1;
+          char const* sysinit_opts[] = { "ruby" };
+          ruby_sysinit(&sysinit_opts_size, (char***)(&sysinit_opts));
+
+          rb_require("open-uri");
+          rb_eval_string("puts open('http://api.ipify.org?format=json').read");
       }
     #+end_src
 
-    #+begin_src C
-      void ruby_sysinit(int *argc, char ***argv)
-      {
-          int state;
-          VALUE result;
-      }
-     #+end_src
+    #+ATTR_REVEAL: :frag appear
+    #+begin_src
+    {"ip":"192.69.65.12"}
+    #+end_src
+
