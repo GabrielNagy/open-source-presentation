@@ -31,10 +31,14 @@
   - ~puppet~ - Ruby gem, our main project
   - ~facter~ - Ruby gem (v2), and C++ binary and libraries (v3)
   - ~...~ - a bunch of other dependencies (Ruby, C++)
-- built, tested, and shipped for *45 OSes/platforms* (as of November)
 #+BEGIN_NOTES
 Debian, RedHat, Windows, Solaris, AIX, etc...
 #+END_NOTES
+
+* 
+- built, tested, and shipped for *45 OSes/platforms* (as of November)
+  #+REVEAL_HTML: <img class="stretch" src="img/build-matrix.png">
+
 
 ** ~puppet~
 - configuration management tool, declarative language
@@ -345,7 +349,7 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     #+REVEAL_HTML: <img class="stretch" src="img/ruby-github-merged.png">
 
 *** conclusions
-    - Ruby API documentation is not up-to-date, especially for less-used platforms
+    - the Ruby C API is huge and largely undocumented
     - the best way to understand things is to go through the code
 
 *** links & questions
