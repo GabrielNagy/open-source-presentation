@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="./reveal.js/css/theme/blood.css" id="theme"/>
 
 <link rel="stylesheet" href="./data/index.css"/>
-
+<link rel="stylesheet" href="data/monokai.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -28,12 +28,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Open Source: User, Maintainer, Contributor</h1><h2 class="author">Gabriel Nagy</h2><h2 class="date">2019-11-28 Thu 00:00</h2><p class="date">Created: 2019-11-25 Mon 20:35</p>
+<h1 class="title">Open Source: User, Maintainer, Contributor</h1><h2 class="author">Gabriel Nagy</h2><h2 class="date">2019-11-28 Thu 00:00</h2><p class="date">Created: 2019-11-26 Tue 09:45</p>
 </section>
 
 <section>
-<section id="slide-org0306917">
-<h2 id="org0306917">Open Source at Puppet</h2>
+<section id="slide-org9d863ab">
+<h2 id="org9d863ab">Open Source at Puppet</h2>
 <p>
 Gabriel Nagy
 </p>
@@ -41,8 +41,8 @@ Gabriel Nagy
 </section>
 </section>
 <section>
-<section id="slide-org2f417d1">
-<h2 id="org2f417d1"><code>$ whoami</code></h2>
+<section id="slide-org34820f9">
+<h2 id="org34820f9"><code>$ whoami</code></h2>
 <ul>
 <li>Linux &amp; FOSS user</li>
 <li>at Puppet since May</li>
@@ -53,8 +53,8 @@ Gabriel Nagy
 </section>
 </section>
 <section>
-<section id="slide-org31b773e">
-<h2 id="org31b773e">what is this?</h2>
+<section id="slide-org5da5296">
+<h2 id="org5da5296">what is this?</h2>
 <ul>
 <li>overview of our projects</li>
 <li>how we benefit from using, and being open source ourselves</li>
@@ -65,8 +65,8 @@ Gabriel Nagy
 </section>
 </section>
 <section>
-<section id="slide-org0d3346a">
-<h2 id="org0d3346a">puppet-agent</h2>
+<section id="slide-orgb579af4">
+<h2 id="orgb579af4">puppet-agent</h2>
 <ul>
 <li>collection of software required for <code>puppet</code> and its dependencies to run</li>
 <li>bundles the following:
@@ -84,8 +84,8 @@ Gabriel Nagy
 </section>
 </section>
 <section>
-<section id="slide-orgf5e5ad4">
-<h3 id="orgf5e5ad4"><code>puppet</code></h3>
+<section id="slide-orgf7277c5">
+<h3 id="orgf7277c5"><code>puppet</code></h3>
 <ul>
 <li>configuration management tool, declarative language</li>
 
@@ -97,7 +97,7 @@ $ puppet resource user gabi
 
 <div class="org-src-container">
 
-<pre  class="src src-puppet">user { 'gabi':
+<pre><code class="" puppet >user { 'gabi':
   ensure  =&gt; 'present',
   comment =&gt; 'gabi',
   gid     =&gt; 1000,
@@ -106,14 +106,14 @@ $ puppet resource user gabi
   shell   =&gt; '/bin/zsh',
   uid     =&gt; 1000,
 }
-</pre>
+</code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orge7e2903">
-<h3 id="orge7e2903"><code>facter</code></h3>
+<section id="slide-orgbacd9eb">
+<h3 id="orgbacd9eb"><code>facter</code></h3>
 <ul>
 <li>provides facts about the system (network, disks, memory, OS)</li>
 <li>current version in C++, can be extended with custom Ruby facts</li>
@@ -127,22 +127,22 @@ $ facter system_uptime --json
 
 <div class="org-src-container">
 
-<pre  class="src src-js">{
-  <span style="font-style: italic;">"system_uptime"</span>: {
-    <span style="font-style: italic;">"days"</span>: 0,
-    <span style="font-style: italic;">"hours"</span>: 1,
-    <span style="font-style: italic;">"seconds"</span>: 4322,
-    <span style="font-style: italic;">"uptime"</span>: <span style="font-style: italic;">"1:12 hours"</span>
+<pre><code class="" js >{
+  "system_uptime": {
+    "days": 0,
+    "hours": 1,
+    "seconds": 4322,
+    "uptime": "1:12 hours"
   }
 }
-</pre>
+</code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgff5a685">
-<h2 id="orgff5a685">how we use open source</h2>
+<section id="slide-orgd4625ca">
+<h2 id="orgd4625ca">how we use open source</h2>
 <ul>
 <li class="fragment appear">keep our runtime up-to-date by patching CVEs</li>
 <li class="fragment appear">October vulnerabilities:
@@ -159,8 +159,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org47427b3">
-<h3 id="org47427b3"><code>ruby</code></h3>
+<section id="slide-orgc9fb66c">
+<h3 id="orgc9fb66c"><code>ruby</code></h3>
 <ul>
 <li>CVE release was a no-op</li>
 <li>the version we had to upgrade to was 2.4.8</li>
@@ -175,8 +175,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org8df1597">
-<h3 id="org8df1597"><code>openssl</code></h3>
+<section id="slide-orgd0914ba">
+<h3 id="orgd0914ba"><code>openssl</code></h3>
 <ul>
 <li>new version did not compile on Windows</li>
 
@@ -191,8 +191,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org3989539">
-<h3 id="org3989539"><code>curl</code></h3>
+<section id="slide-orgc53d1ec">
+<h3 id="orgc53d1ec"><code>curl</code></h3>
 <ul>
 <li>new version did not compile on Solaris</li>
 
@@ -207,8 +207,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org3493bf8">
-<h2 id="org3493bf8">how the community helps</h2>
+<section id="slide-org4bf23a8">
+<h2 id="org4bf23a8">how the community helps</h2>
 <ul>
 <li>had to harden our compiled libraries and binaries
 <ul>
@@ -226,8 +226,8 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-orgcae850e">
-<h2 id="orgcae850e">how we contribute back</h2>
+<section id="slide-org9192cf1">
+<h2 id="org9192cf1">how we contribute back</h2>
 <ul>
 <li>we use <code>ruby</code> extensively on non-standard platforms</li>
 <li>sometimes we discover issues</li>
@@ -237,20 +237,20 @@ $ facter system_uptime --json
 </section>
 </section>
 <section>
-<section id="slide-org953a580">
-<h3 id="org953a580">segfaulting with <code>facter</code></h3>
+<section id="slide-orgbfc25e2">
+<h3 id="orgbfc25e2">segfaulting with <code>facter</code></h3>
 <div class="org-src-container">
 
-<pre  class="src src-ruby"><span style="font-weight: bold; text-decoration: underline;">Facter</span>.add(<span style="font-style: italic;">'test'</span>) <span style="font-weight: bold;">do</span>
-  url = <span style="font-style: italic;">'https://api.ipify.org?format=json'</span>
-  <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">{"ip":"79.114.90.219"}</span>
-  response = <span style="font-weight: bold;">open</span>(url).read
-  <span style="font-weight: bold;">if</span> !response.to_s.empty?
-    result = <span style="font-weight: bold; text-decoration: underline;">JSON</span>.parse(response)
-    setcode { result[<span style="font-style: italic;">'ip'</span>] }
-  <span style="font-weight: bold;">end</span>
-<span style="font-weight: bold;">end</span>
-</pre>
+<pre><code class="" ruby >Facter.add('test') do
+  url = 'https://api.ipify.org?format=json'
+  # {"ip":"79.114.90.219"}
+  response = open(url).read
+  if !response.to_s.empty?
+    result = JSON.parse(response)
+    setcode { result['ip'] }
+  end
+end
+</code></pre>
 </div>
 <ul>
 <li>custom fact that queries an API for your public IP</li>
@@ -262,8 +262,8 @@ $ facter test
 </pre>
 
 </section>
-<section id="slide-orgfedf4f4">
-<h4 id="orgfedf4f4">on windows though&#x2026;</h4>
+<section id="slide-orge564c44">
+<h4 id="orge564c44">on windows though&#x2026;</h4>
 <div style="font-size: 0.7em;">
 <pre  class="example">
 C:/Program Files/Puppet Labs/Puppet/puppet/lib/ruby/2.5.0/net/protocol.rb:45: [BUG] Segmentation fault
@@ -298,8 +298,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </div>
 
 </section>
-<section id="slide-orgd358590">
-<h4 id="orgd358590">the elephant in the room</h4>
+<section id="slide-org4905c6c">
+<h4 id="org4905c6c">the elephant in the room</h4>
 <ul>
 <li>this code is not directly evaluated by the Ruby interpreter</li>
 <li>the <code>Facter.add</code> implementation looks like this:</li>
@@ -307,24 +307,24 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; text-decoration: underline;">module</span>::<span style="font-weight: bold;">ruby_add</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span>* <span style="font-weight: bold; font-style: italic;">argv</span>, <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">self</span>)
+<pre><code class="" C++ >VALUE module::ruby_add(int argc, VALUE* argv, VALUE self)
 {
-    <span style="font-weight: bold;">return</span> safe_eval(<span style="font-style: italic;">"Facter.add"</span>, [&amp;]() {
-        <span style="font-weight: bold;">auto</span> <span style="font-weight: bold;">const</span>&amp; <span style="font-weight: bold; font-style: italic;">ruby</span> = <span style="font-weight: bold; text-decoration: underline;">api</span>::instance();
+    return safe_eval("Facter.add", [&]() {
+	auto const& ruby = api::instance();
 
-        <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">fact_self</span> = from_self(self)-&gt;create_fact(argv[0]);
+	VALUE fact_self = from_self(self)->create_fact(argv[0]);
 
-        ...
+	...
 
-        <span style="font-weight: bold;">return</span> fact_self;
+	return fact_self;
     });
 }
-</pre>
+</code></pre>
 </div>
 
 </section>
-<section id="slide-org1298ed1">
-<h4 id="org1298ed1">what we knew</h4>
+<section id="slide-orgdcd8771">
+<h4 id="orgdcd8771">what we knew</h4>
 <ul>
 <li>this worked on ruby 2.4 but crashed on 2.5</li>
 <li>only happened on Windows</li>
@@ -333,8 +333,8 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
 </ul>
 
 </section>
-<section id="slide-org0e6a38e">
-<h4 id="org0e6a38e">next steps</h4>
+<section id="slide-org203b29b">
+<h4 id="org203b29b">next steps</h4>
 <ul>
 <li>check what changed in <code>ruby</code> between 2.4 and 2.5</li>
 
@@ -356,29 +356,27 @@ git rev-list --count v2_4_5..v2_5_3 -- win32/
 </pre>
 
 </section>
-<section id="slide-orgd956653">
-<h4 id="orgd956653">what we could have done</h4>
+<section id="slide-org36c7ace">
+<h4 id="org36c7ace">what we could have done</h4>
 <ul>
 <li>use <code>git-bisect(1)</code> to find the culprit</li>
-<li class="fragment appear"><p>
-programatically determine which commit is responsible by building the project and testing the problematic fact
-</p>
-<img src="img/drake-no.jpg" width="50%"></li>
+<li class="fragment appear">programatically determine which commit is responsible by building the project and testing the problematic fact</li>
+<li class="fragment appear"><img src="img/drake-no.jpg" width="50%"></li>
 
 </ul>
 
 </section>
-<section id="slide-org3f5559f">
-<h4 id="org3f5559f">what we did</h4>
+<section id="slide-orgd5bcbe3">
+<h4 id="orgd5bcbe3">what we did</h4>
 <ul>
 <li>figure it out by manually going through each commit</li>
+<li class="fragment appear"><img src="img/drake-yes.jpg" width="50%"></li>
 
 </ul>
-<img src="img/drake-yes.jpg" width="50%">
 
 </section>
-<section id="slide-orga0f7b90">
-<h4 id="orga0f7b90">windows sockets?</h4>
+<section id="slide-orga9494a7">
+<h4 id="orga9494a7">windows sockets?</h4>
 <ul>
 <li>a chunk of commit <code>e33b169 - win32.c: vm_exit_handler</code></li>
 
@@ -390,18 +388,18 @@ programatically determine which commit is responsible by building the project an
 </ul>
 
 </section>
-<section id="slide-org79e2751">
-<h4 id="org79e2751"><code>NtSocketsInitialized</code></h4>
+<section id="slide-orgce8ec32">
+<h4 id="orgce8ec32"><code>NtSocketsInitialized</code></h4>
 <ul>
 <li>this variable is referenced over 30 times in the file, similar to the code below:</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold;">if</span> (!NtSocketsInitialized) {
+<pre><code class="" C >if (!NtSocketsInitialized) {
     StartSockets();
 }
-</pre>
+</code></pre>
 </div>
 <ul>
 <li class="fragment appear"><p>
@@ -413,10 +411,10 @@ after preprocessing, the bit becomes:
 
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold;">if</span> (!1) {
+<pre><code class="" C >if (!1) {
     StartSockets();
 }
-</pre>
+</code></pre>
 </div></li>
 <li class="fragment appear"><code>StartSockets()</code> is the function responsible to initialize the Winsock DLL</li>
 <li class="fragment appear">Winsock handles internet I/O requests for Windows</li>
@@ -425,8 +423,8 @@ after preprocessing, the bit becomes:
 </ul>
 
 </section>
-<section id="slide-org0579bd7">
-<h4 id="org0579bd7">getting to the point</h4>
+<section id="slide-org2437668">
+<h4 id="org2437668">getting to the point</h4>
 <ul class="fragment appear">
 <li>after commit <a href="https://github.com/ruby/ruby/commit/e33b1690d06f867e45750bd8e3e8b06d78b5bc26"><code>e33b169</code></a>, <code>StartSockets()</code> goes from possibly being called in 34 places</li>
 <li><p>
@@ -435,25 +433,25 @@ to getting called <b>once</b>
 
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">rb_w32_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre><code class="" C >void rb_w32_sysinit(int *argc, char ***argv)
 {
-    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">...</span>
+    // ...
     tzset();
     init_env();
     init_stdhandle();
     atexit(exit_handler);
 
-    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">Initialize Winsock</span>
+    // Initialize Winsock
     StartSockets();
 }
-</pre>
+</code></pre>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-org1d9dbd4">
-<h4 id="org1d9dbd4"></h4>
+<section id="slide-org2f8483b">
+<h4 id="org2f8483b"></h4>
 <ul>
 <li><code>rb_w32_sysinit</code> is a function that we have to call manually if we&rsquo;re embedding the Ruby interpreter</li>
 <li>to be platform-agnostic we can call the main <code>sysinit</code> function:</li>
@@ -461,54 +459,54 @@ to getting called <b>once</b>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre><code class="" C >void ruby_sysinit(int *argc, char ***argv)
 {
-<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
+#if defined(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="font-weight: bold;">#endif</span>
+#endif
 ...
 }
-</pre>
+</code></pre>
 </div>
 
 </section>
-<section id="slide-orgbb07f86">
-<h4 id="orgbb07f86">fixing stuff</h4>
+<section id="slide-orgbcdf722">
+<h4 id="orgbcdf722">fixing stuff</h4>
 <ul>
 <li>we try calling the function in a simple C program</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre><code class="" C >void ruby_sysinit(int *argc, char ***argv)
 {
-<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
+#if defined(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="font-weight: bold;">#endif</span>
+#endif
 ...
 }
-</pre>
+</code></pre>
 </div>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre><code class="" C >void ruby_sysinit(int *argc, char ***argv)
 {
-<span style="font-weight: bold;">#if</span> <span style="font-weight: bold;">defined</span>(_WIN32)
+#if defined(_WIN32)
     rb_w32_sysinit(argc, argv);
-<span style="font-weight: bold;">#endif</span>
+#endif
 ...
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">ruby_sysinit</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">argc</span>, <span style="font-weight: bold; text-decoration: underline;">char</span> ***<span style="font-weight: bold; font-style: italic;">argv</span>)
+<pre><code class="" C >void ruby_sysinit(int *argc, char ***argv)
 {
-    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">state</span>;
-    <span style="font-weight: bold; text-decoration: underline;">VALUE</span> <span style="font-weight: bold; font-style: italic;">result</span>;
+    int state;
+    VALUE result;
 }
-</pre>
+</code></pre>
 </div>
 </section>
 </section>
@@ -547,6 +545,7 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
  { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
