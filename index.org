@@ -100,7 +100,6 @@ user { 'gabi':
    - new version did not compile on Solaris
    #+REVEAL_HTML: <img class="stretch" src="img/curl-release.png">
    - issue was fixed after the release
-   - we need to patch ~curl~ and ~openssl~ until new releases come out
 
 ** conclusions?
    - open-source projects are widely used and understaffed
