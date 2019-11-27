@@ -61,6 +61,8 @@ pre {
   margin: 1.5rem 0 0 0;
   font-size: 90%; }
 
+.reveal .controls, .slide-number-a, .slide-number { display: none !important; }
+
 .no-center {
   top: 40px !important;
 }
