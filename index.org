@@ -4,7 +4,7 @@
 #+REVEAL_TRANS: fade
 #+REVEAL_THEME: blood
 #+REVEAL_TITLE_SLIDE: <h4>%a</h4><h3>%t</h3>%e
-#+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800 reveal_mousewheel:t reveal_generate_ids:t reveal_history:t
+#+OPTIONS: num:nil toc:nil reveal_width:1200 reveal_height:800 reveal_mousewheel:t reveal_generate_ids:t reveal_history:t reveal_progress:nil
 #+REVEAL_HIGHLIGHT_CSS: data/an-old-hope.css
 #+REVEAL_PLUGINS: (highlight notes)
 #+REVEAL_EXTRA_CSS: ./data/index.css
