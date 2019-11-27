@@ -25,7 +25,7 @@ a {
   color: #00568a;
   text-decoration: none; }
 
-a[href^="http"] { color: #7ab516; }
+.reveal a { color: #afff14 !important; }
 
 /* Show icon for outgoing/external link.
    Positioning without line break after icon based on this:
