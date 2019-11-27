@@ -22,7 +22,7 @@
 * what is this?
 - overview of our projects
 - how we benefit from ~/using|being/~ open-source
-- why is open-source beneficial
+- pros & cons of open-source
 
 * puppet-agent
 - collection of software required for ~puppet~ and its dependencies to run
@@ -76,7 +76,7 @@ user { 'gabi':
 #+END_SRC
 
 * how we use open source
-#+ATTR_REVEAL: :frag (appear appear appear)
+#+ATTR_REVEAL: :frag (none appear appear)
 - keep our runtime up-to-date by patching CVEs
 - October vulnerabilities:
   - Ruby
