@@ -360,4 +360,4 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     - ruby:
       - [[https://silverhammermba.github.io/emberb/embed/][Running Ruby in C]]
       - [[https://silverhammermba.github.io/emberb/c/][The Ruby C API]]
-      - [[https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup][WSAStartup function (winsock.h) - Win32 apps | Microsoft Docs]]
+      - [[https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup][WSAStartup function (winsock.h) - Microsoft Docs]]
