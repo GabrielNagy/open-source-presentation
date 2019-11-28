@@ -227,7 +227,7 @@ c:0001 p:0000 s:0003 E:000640 (none) [FINISH]
     #+REVEAL_HTML: <img class="stretch" src="img/drake-yes-1.jpg">
 
 *** windows sockets?
-    - a chunk of commit ~e33b169 - win32.c: vm_exit_handler~ 
+    - a hunk of commit ~e33b169 - win32.c: vm_exit_handler~ 
     #+REVEAL_HTML: <img class="stretch" src="img/ruby-define.png">
     - this replaces all references of ~NtSocketsInitialized~ with ~1~ before compile time
 
